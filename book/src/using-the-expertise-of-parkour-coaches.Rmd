@@ -1,0 +1,518 @@
+\addcontentsline{toc}{section}{Abstract}
+\begin{center}
+%\vspace*{2cm}
+{\headerfont\Large\bfseries Abstract}
+\end{center}
+
+Parkour is a discipline in which practitioners (*traceurs*) traverse their environment using a variety of movements. Parkour's decentralised spread and community commitment to diverse practice does not provide easily identifiable definitions or outcome measures for a given movement. This can make it challenging to identify a dependent variable of a parkour movement for study or qualitative assessment. In the absence of objective parkour technique definitions, 15 parkour coaches were interviewed about the performance and goals of a common parkour technique, the kong vault. This sampling of expert knowledge provided a broad yet detailed overview of a movement that can be performed with a high degree of variability within a dynamic range of environments. Subsequent analysis led to the development of a deterministic model intended to assist in the understanding of the kong vault in application to highly individual or situational outcomes, rather than comprehensively prescribing objective performance. The model positions the kong vault as consisting of distinct take-off, obstacle contact, and flight phases, and allows connection to any subsequent landing or movement. Flight is determined by the actions taken during take-off and obstacle contact, with obstacle contact making only moderate changes to an existing projectile arc but expressing a greater change in the angular momentum of the body. The optimal outcome of the kong vault can therefore be considered as achieving a projectile arc and body position that effectively places the traceur in as advantageous position as possible to efficiently and consistently perform a given landing or movement.
+
+\textbf{Keywords:} \textit{parkour $\cdot$ freerunning $\cdot$ kong vault $\cdot$ traceur $\cdot$ coaching $\cdot$ deterministic model}
+
+
+\newpage
+
+# Introduction
+
+Parkour is a discipline in which practitioners (*traceurs*) traverse their environment using a variety of movements including, but not limited to, running, jumping, swinging, climbing, and vaulting. Detailed descriptions of parkour can differ between individual traceurs and organisations, with parkour described in numerous summaries across sports science, sociological, psychological, and performing arts literature [@OGrady2012]. The difficulty in identifying a singular definition of parkour arises from its rapid and decentralised expansion via internet forums, video-sharing platforms, and social media that continues to the present day [@Puddle2018]. This non-prescriptive, open-ended nature has been embraced by the parkour community, with some questioning the ongoing attempts to establish governing bodies amid increasing sportisation [@Wheaton2017] while seeking to ensure a "freedom of diverse practice" [@ParkourEarth2020].
+
+However, this open-ended nature presents a challenge for researchers wishing to study the biomechanics of parkour. As @Winter2009 [p. 2] outlines, "any quantitative assessment of human movement must be preceded by a measurement and description phase", but parkour's diverse practice often does not provide easily identifiable definitions or outcome measures for a given movement. This can make it difficult to identify a dependent variable of a parkour movement for study in a research environment or qualitative assessment in a coaching context. In the absence of objective technique definitions, this study instead proposes to sample the expertise of parkour coaches to develop an example deterministic model of a commonly performed parkour technique, the kong vault, that can inform future studies. 
+
+# Literature review
+
+## Defining parkour techniques
+
+Despite the decentralised growth of parkour, traceurs have adopted an emergent set of "core movements and techniques" [@Aggerholm2017]. These techniques have names, are grouped according to related features, and are taught in parkour classes. Disputes over the attributes of these movements do not appear common amongst the parkour community in the same way traceurs often debate the broader definition of parkour. They have matured from the experimental movements performed by early pioneers, refined over time by traceurs across the globe, and firmly established themselves as identifiable parkour techniques, meeting the definition of distinct skills in their use to reliably achieve a desired result [@Schmidt2019].
+
+Yet parkour's open-skilled nature [@Grospretre2020], where techniques are performed in dynamic, varied, and continually changing environments, makes it challenging to epitomise any parkour technique for study. Other sports take place in fixed environments with clearly defined objective success markers that can provide structure to analysis, whether that be an immediate binary outcome (a goal was scored, the top of a climbing wall was reached) or a more extensive, nuanced expression of success (a judging panel scoring a routine). These definitions and markers are often codified in rulebooks or judging guidelines which, in turn, set a quantifiable outcome measure to evaluate a movement against, such as investigating the correlations between biomechanical variables in gymnastics and scores given by judges [@Scharer2019]. Parkour currently has no widely-accepted rulebook or judging guidelines, despite an increase in parkour competitions [@OLoughlin2012]. Instead, parkour competitions remain provincial, with any adopted rulesets usually pertaining only to that singular competition.
+
+Such competition frameworks can influence the scientific study of parkour despite a lack of widespread acceptance. @Padulo2019 proposed a parkour-specific fitness test to assess traceurs competitive skills but drew from only one source of competition guidance [@IPF2019] to justify their choice of included skills. Other forms of parkour competition, such as speed run events where a traceur is given a fixed beginning and endpoint but are free to determine their method of traversing the environment, may be a more ecologically valid method of measuring parkour performance [@Strafford2021]. However the problem remains that, due to their freeform nature, parkour speed run events do not provide any further guidance on individual techniques as the decision to include, or not include, any movement in a speed run is entirely down to the traceur. There are also criticisms of competitive parkour from within the traceur community that may make it difficult to justify as a source of technique definition. Despite increasing acceptance, competition (notably commercialised, sponsored competition) is often viewed as deviating from the core principles of parkour [@Angel2016].
+
+Parkour coaching qualifications may provide an alternative source of technique definition that could be usefully applied to research studies. However, within such qualifications, coaching skills---such as class management, or observation and feedback techniques---often take precedence over teaching parkour movement itself. Parkour UK---the national governing body for parkour in the United Kingdom---uses a Competency Assessment Checklist in their coaching qualification, which contains several parkour techniques to be demonstrated or taught by the coach [@ParkourUK2018]. Technique names are listed without further description, and the assessment scoring consists of only 'competent' or 'not yet competent' marks without any specific guidance on how this competency should be assessed. Instead, the personal experiences and judgement of the tutors delivering the course become the primary criterion against which competency is assessed. This reliance on experience reflects the findings of @Greenberg2020 that describes a coaches' prior experience as a traceur as their primary source of technique acquisition and development, developing their skills over time using anecdotal and experiential evidence. The overall experiences of parkour coaches that @Greenberg2020 report mirrors those of coaches across numerous sports found by @Stoszkowski2016, with knowledge transfer mainly occurring in the "social milieu" of peer-to-peer conversation and observation.
+
+With no restricted environment and no formal technique definition, biomechanics researchers must therefore impose their own structure upon research into parkour movement, with delimits derived from prior studies or their own observations. It may be easier to justify these delimits for some techniques than others, and this could be the reason biomechanics-focused parkour research to date has predominantly investigated the ability of traceurs to mitigate ground reaction forces in jumping and landing tasks [@Puddle2013; @Standing2015; @Grospretre2018]. Such research can draw on other jumping sports to justify a quantifiable measure---for instance, measuring the height an athlete can jump to indicate their lower-limb power or how their landing style will affect their risk of injury. Only recently have studies begun exploring other aspects of parkour with less apparent parallels to other sports, such as @Croft2019 investigating work optimisation in the parkour wall-run technique. Even so, the binary success outcome of either reaching or failing to reach the top of a wall still presents a clear objective marker that can be quantitatively measured - vertical displacement. If an adjustment to a technique increases the vertical distance travelled, allowing a traceur to reach the top of a wall they previously could not, that adjustment can be regarded as having improved their wall-run performance. However, some techniques are more nuanced in their goals and require equally nuanced understanding before study.
+
+## The kong vault
+
+Vaulting an obstacle is a standard action in parkour, and within this sub-group of movement, the *kong vault* has become a frequently utilised parkour technique. The kong vault (alternatively known as the catpass, saut de chat, or monkey vault [@Gerling2013]) consists of the traceur diving onto an obstacle with their hands, tucking their knees into their chest, and bringing their feet through their hands to pass over the obstacle. As reported in a  recent narrative review by @Pagnon2021, the commonality of the kong vault has led to it being the only parkour vaulting technique thus far reported on in the scientific literature, albeit in only a single paper. Participants in this single study of the kong vault by @Maldonado2019 performed the vault from a standing position and vaulted over a bar, but no justification was given as to why that particular version of the vault was chosen. The kong vault moniker is also applied to similar techniques performed with a run-up, or from a plyometric movement, or on a flat-top obstacle [@Henry2017]. Consequently, the execution of a kong vault may alter to meet a particular result or to tackle disparate environmental factors.
+
+While judging guidelines exist for vaults performed in a competitive gymnastics setting [@deGymnastique2017], the measure of a successful kong vault is less clear. Success could be a simple binary outcome---the traceur passed the obstacle or did not---or be broken down into a variety of outcomes based on the current environment or the personal subjective goals of the traceur at that moment. It is not clear how these numerous variables should subsequently be fixed for study in a lab, or why. As a result, the specific findings of @Maldonado2019 may not be generalised to every movement labelled as a kong vault, which is emphasised within the paper when discussing the static nature of the take-off but incorrectly widened to a blanket statement on all kong vaults in the concluding remarks. Before any further quantitative assessment of the kong vault can take place, some attempt must be made to understand, define, and validate the use of any particular version of the technique, both in everyday parkour practise and when considered for study. 
+
+## Deterministic models
+
+@Chow2011 propose using deterministic models in biomechanics studies to bridge the gap between theoretical and empirical understanding of sports research. Deterministic models are often depicted as block diagrams, showing the relationships between a desired result and the biomechanical factors that produce that result, as outlined in Figure \@ref(fig:example-model). The top-most level of a model can be either an objective measure of performance, such as time, or an external subjective measure, such as a judges score. In cases where an individual movement may only contribute partially to an overall measure, it can also be assessed in terms of how successfully it contributes to the greater whole, often referred to as *advantage* [@Hay1988].
+
+(ref:example-model-cap) Elements of a deterministic model (Hay and Reid, 1988, p. 244).
+
+(ref:example-model-alt) An example deterministic model, depicted as a descending flowchart with result as the top-most box, with linked boxes below containing the factors which produce that result. Reproduced from Hay and Reid, 1988, p. 244).
+
+<!-- Reference with \@ref(fig:example-model) -->
+
+```{r example-model, fig.cap="(ref:example-model-cap)", fig.scap="Example deterministic model", fig.alt="(ref:example-model-alt)", message=FALSE, warning=FALSE, echo=FALSE, include=TRUE}
+
+knitr::include_graphics(here::here("book", "assets", "imgs", "example-model.png"))
+
+```
+
+Deterministic models are built using expert observation and analysis following the identification of the desired result [@Ham2007], but given the subjective and dynamic goal-setting of parkour movement, selecting a result for the top-most level of the model is difficult for the kong vault. Building the remaining levels of the model through observation alone could also be difficult due to the wide array of technique adjustments available to a traceur, influenced by the dynamic environments parkour is performed within. A researcher could never definitively say they have observed every possible permutation of a parkour technique.
+
+Rather than observing a limited example, building a model by compiling the expertise of parkour coaches in using and teaching the kong vault would draw from a much wider variety of circumstances. @Strafford2020 used this method in sampling the experiential knowledge of parkour coaches to catalogue the skills developed by parkour training and organise them into associated groupings, such as "physical" and "perceptual" skills. A similar approach in sampling expert understanding to identify emergent patterns can be used to construct a deterministic model of the kong vault that could summarise the most common aspects of the technique. Permutations within deterministic models can also be accommodated, as seen in a diagram used to describe the long jump by @Kamnardsiri2015 [Figure 1] which contained three distinct styles---the hang, stride jump, and hitch kick---within a shared 'flight and landing' phase.
+
+However, while a model for the long jump has a quantifiable outcome measure regardless of style---horizontal distance travelled---a kong vault model would also need to investigate and document the outcomes that traceurs desire when using the kong vault. This may result in numerous deterministic models being constructed, each with a different outcome measure at the highest level of the model depending on the chosen goal. Finally, common coaching cues for the kong vault can also be sampled and linked to the mechanical variables they are attempting to control within the model, as seen in a systematic review of Yurchenko gymnastics vault literature by @Diener2019 which linked the phases of the vault to a series of kinetic and kinematic performance indicators. Categorising the phases of a kong vault and identifying the performance indicators contributing to each phase would allow coaches and researchers to accurately describe the technique being performed in classes or studies. These indicators could then be associated with quantifiable measures and tested. For example, if maximising horizontal distance is identified as a typical desired outcome, and changing take-off velocity is believed by coaches to be a kinematic predictor of horizontal distance, there would be justification for studying the relationship between these variables.
+
+Sampling the expertise of parkour coaches also serves to build a deeper engagement between coaches and sports science researchers. The degree to which sports science research engages with topics that sports coaches find functionally relevant and helpful has been called into question [@Buchheit2017]. Currently, academic research on parkour is sparse and not well-publicised within the parkour community, but if built collaboratively between traceurs, coaches, and researchers, could benefit the future development of the sport without imposing itself upon the diverse practice sought by traceurs.
+
+## Objective
+
+This study will aim to take one of the most common parkour movements, the kong vault, and through interviews with parkour coaches construct one or more deterministic models that describe the technique and its permutations. This approach is proposed as a communal method to catalogue and define the varied applications of parkour techniques in the absence of any objective source of parkour definition, to allow easier qualitative and quantitative assessment of parkour movements in coaching and research environments.
+
+# Method
+
+## Research design
+
+A pragmatic grounded theory design was used to conduct the present study [@ChamberlainSalaun2013]. Although originating in social science fields, this approach has become more common in the health sciences to extract understanding from communications with participants immersed in the area of study [@Levitt2018]. Such an approach is also practical in topics where prior research is sparse, and a researcher is aiming to follow an inductive process rather than entering with predetermined theories.
+
+## Participant recruitment and characteristics
+
+Following ethical approval by the London Metropolitan University School of Human Sciences Research Ethics Review Panel, parkour coaches were recruited using purposeful and snowball sampling techniques [@Strafford2020]. A flow chart of the participant recruitment process is reported in Figure \@ref(fig:recruitment-diagram). Recruitment for the study was initially advertised through parkour coaching online social groups and the researcher's own personal social media accounts. Participants were required to have experience coaching parkour, although no minimum amount or current status requirements were set to try and capture a broad variety of experience levels and viewpoints. Following initial recruitment, two participants also voluntarily passed details of the study to colleagues for further recruitment. All participants signed informed consent forms prior to interviewing and were offered anonymity when reporting interview contents. Participant demographic information, including their age, gender, location, and parkour training and coaching experience, was gathered using online form software (Airtable.com, San Francisco, Formagrid Inc.) submitted by participants in advance of their interview.
+
+(ref:recruitment-diagram-cap) Participant recruitment flow chart.
+
+(ref:recruitment-diagram-alt) Flowchart showing the recruitment journey of participants for this study. 28 participants responded to the online advert and 2 were passed details by a friend who had already taken part. 17 then returned the signed participant informed consent form, while 13 did not and were dropped from the study. Finally 15 participants arranged an interview date while 2 did not. 15 participants were subsequently interviewed for this study.
+
+<!-- Reference with \@ref(fig:recruitment-diagram) -->
+
+```{r recruitment-diagram, fig.cap="(ref:recruitment-diagram-cap)", fig.alt="(ref:recruitment-diagram-alt)", fig.scap="Participant recruitment flow chart", message=FALSE, warning=FALSE, echo=FALSE, include=TRUE}
+
+if (!git) {knitr::include_graphics(here::here("book", "assets", "imgs", "recruitment.pdf"))} else {knitr::include_graphics(here::here("book", "assets", "imgs", "png", "recruitment.png"))}
+
+if (git) {
+  knitr::opts_chunk$set(out.width = "80%")
+}
+
+```
+
+
+Fifteen parkour coaches were interviewed (male = 11, female = 4, age [mean ± sd]: 26.5 ± 7.5 yr, parkour experience: 9.2 ± 4.5 yr, coaching experience: 5.1 ± 4.7 yr). Full participant characteristics are reported in Table \@ref(tab:participant-chars-table).
+
+```{r participant-chars-table}
+```
+
+
+
+## Interview process and data analysis
+
+Interviews were conducted via video calls using Zoom (version 5.5.4, San Jose, Zoom Video Communications Inc.). Interviews lasted between 44 and 96 minutes (mean: 63 ± 14 min). All interviews were conducted in a semi-structured format, with key questions to be asked while allowing for flexible diversions into individual details and sub-questions as the conversation developed. All interviews began with participants being asked for a brief description of the kong vault in their own words before probing questions were used to investigate further aspects of this description. Either as a direct result of these probing questions or by transitioning into new topics where appropriate, interviews then explored the participants own understanding of how a kong vault is performed, including identifiable features of the vault, a breakdown of its execution, how the vault may be used and in what situations, and participant experiences in learning and coaching the vault. The researcher had professional experience in the field of parkour coaching and was able to allow conversations to develop naturally in terms familiar to the interviewee, further building trust and rapport. Given the pragmatic approach to research design, the structured components of the interview process were reviewed after each participant and updated if other common relevant topics arose.
+
+All interviews were recorded in their entirety using the built-in recording feature of Zoom and transcribed into text format. A mixed transcription method was used, with initial transcription taking place using automatic transcription software (Otter.ai, Los Altos, Otter.ai Inc)  before being manually checked and corrected where necessary. Interview transcripts were analysed using NVivo Qualitative Data Analysis software (version 1.3.2, Massachusetts, QSR International) for both initial and follow-up coding stages as data was gathered and coding themes developed [@Creswell2020]. 
+
+Initial coding used thematic analysis [@Braun2006] to identify and extract the various common language descriptions given to the kong vault across a variety of dimensions, including its phases, permutations, goals, uses, and execution, and generate themes relating to each of these dimensions. Follow-up coding then considered how these themes and descriptions could be combined or connected, linking them to build an overview of the technique and the factors affecting performance. As per the research design, a pragmatic method using both inductive and deductive approaches was applied in coding, with some statements by participants expressing clear meaning (inductive) while other statements were interpreted through a theoretical biomechanics perspective (deductive) to inform their contribution to the understanding of the kong vault. 
+
+## Model creation and validation
+
+Recruitment, interviewing, and coding cycles continued until it was perceived that data saturation had been achieved, wherein new data collected was no longer revealing new meaningful features, only confirming those already identified [@Aldiabat2018]. Once data saturation was reached, the phases, goals, and coaching cues identified for the kong vault were compiled into a deterministic model diagram. As described in @Hay1988, a single identified outcome measure was placed at the top of a block diagram and subsequently broken down into component mechanical variables in the level below. Each variable was further broken down in subsequent levels until a variable could not be further usefully deconstructed into smaller components and each level of the diagram was explained by the level below it. Variables were broken down by a mix of information gained from the interview process (deductive) and the researchers own biomechanics knowledge and research (inductive).
+
+An independent critical friend approach was used to ensure research rigour and encourage reflexiveness during the analysis and model building stages [@Smith2018]. Identified themes from interviews were discussed with an external and independent experienced parkour coach (male, UK, age: 32 yr, parkour experience: 12 yr, coaching experience: 6 yr) throughout the analysis process, along with the thoughts and interpretations formed by the researcher to build the deterministic model of the kong vault. Their role was not to contribute to the data being analysed but rather to provide a source of independent thought on the interpreted elements of the interview contents and to provide a secondary source of validation to the finalised model [@Strafford2020]. This approach ensured the final model was not simply the researcher's own preexisting notions of the nature of the kong vault filtered through cherry-picked participant responses but rather a consensus reflection of the themes drawn from the interview process.
+
+# Results and discussion
+
+The themes identified from analysis of the interview transcripts are presented in Figure \@ref(fig:themes-diagram). Three main meta-themes were identified: "Description and execution", "Uses, goals, and outcome measures", and "Learning and coaching". Analysis of the contents of these themes and sub-themes provided a detailed overview of participant understanding of the movement that was synthesised into a proposed deterministic model.
+
+(ref:themes-diagram-cap) Themes and sub-themes identified in analysis of the interview transcripts.
+
+(ref:themes-diagram-alt) Flowchart depicting the breakdown of themes and sub-themes identified in analysis of the interview transcripts. 3 main themes were identified - 'description and execution', 'uses, goals, and outcome measures', and 'learning and coaching'. Description and execution further broke down into the sub-themes of basic defining features, vault biomechanics, and the phases of the movement such as take-off, obstacle contact, and flight. Uses and goals identified numerous sub-themes, notably the type of obstacle the vault can be used on, how it differs from other parkour vaults, and why an athlete may choose it, such as utility or aesthetics. Finally learning and coaching identified sub-themes for how participants learnt the vault themselves, the difficulties and physical or mental barriers they encountered, how they now pass it onto their students including common drills and their development as a coach, and finally considered if the kong vault is a fundamental parkour movement.
+
+<!-- Reference with \@ref(fig:themes-diagram) -->
+
+```{r themes-diagram, fig.cap="(ref:themes-diagram-cap)", fig.scap="Interview themes diagram", fig.alt="(ref:themes-diagram-alt)", message=FALSE, warning=FALSE, echo=FALSE, include=TRUE, fig.pos="p"}
+
+if (!git) {knitr::include_graphics(here::here("book", "assets", "imgs", "themes.pdf"))} else {knitr::include_graphics(here::here("book", "assets", "imgs", "png", "themes.png"))}
+
+```
+
+
+
+## Overview of the kong vault {#overview}
+
+All coaches interviewed were familiar with the common terms used to describe the movement (kong vault, catpass, saut de chat). Coaches predominantly use the anglicised term "kong" in their coaching and training activities, although in Austria the term "katze" (literally translated to "cat") was used when training with German speakers. Three coaches mentioned a conscious effort to use the term catpass instead of kong as they felt it was either more descriptive or out of respect for the original French name to which it is closer in translation [@Kessler2013]. Mostly, coaches consider the terms interchangeable, and many stressed they would simply adapt to the term most familiar to the person or community they were currently training with. "Monkey vault" appears to no longer be in general use in reference to the full kong movement, but a distinction was made by two American coaches that the terms "monkey vault" or "monkey up" remained in use in reference to a particular adaptation that was focused on mounting an obstacle with the feet rather than completely clearing it. 
+
+Broad descriptions of the kong vault predominantly describe a linear direction of travel alongside a specific timing and placement of the hands on an obstacle. Variations can occur in the approach to, and exit from, the vault, but in all interviews coaches unanimously identified diving forward and placing both hands simultaneously on an obstacle with the rest of the body following in a straight line as key identifying features of a kong vault. One participant described the vault summarily as:
+
+> A hand first bilateral vault over an obstacle.
+
+The diving, or hands-first nature, of the kong distinguishes it from another linear bilateral parkour vault known as the dash vault, wherein the traceur jumps feet first over an obstacle with the hands landing bilaterally on the obstacle behind them. The linearity of the kong vault is also due to this diving action and maintains a narrow, shoulder-width profile in the frontal plane that allows the use of the kong vault in tighter spaces. Following contact with the obstacle the rest of the body crunches inwards, tucking the knees into the chest and the feet towards the thighs. There is rotation solely in the sagittal plane, first forward when diving then usually reversed following obstacle contact, with no rotation in the transverse or frontal planes normally occurring throughout the movement:
+
+> It is a symmetrical vault where you place both hands on the object and your body moves through that the plane between your two hands.
+
+> I would describe it as getting over an obstacle using your hands only. And you're continuing in a forward orientation, so you're not turning or twisting your body. And then as you're pushing past the obstacle, the feet are going between the hands.
+
+Beyond this basic description, the criteria for kong vault identification became harder for participants to specify. All were quick to establish in their interviews that parkour remains open-ended and that although common names for techniques are used, these are not strictly defined and are essentially derived purely from the "community of practise" that traceurs engage in [@OGrady2012]. This is also in keeping with the nature of parkour as a lifestyle sport where performance can be fluid in definition [@Gilchrist2016]. Whether or not a particularly esoteric deviation from the general blueprint for a kong is technically a kong is not of vital import to the parkour community. Rather, having named movements is more of use as a short-hand for communication, introducing the sport to beginners, and encouraging the supportive and collaborative experience of parkour training [@Clegg2012]. It appears that there is, in effect, just an approximate pattern of movement that is considered of utility in an environment that has for ease of reference come to be called a kong vault. It has survived and been passed down alongside a core component of other useful movement patterns in parkour due to their application in adapting to a wide variety of environments and obstacles, not solely because parkour is a specific set of techniques one must master to be considered a traceur:
+
+> I think the basics are considered like the the basics or the classics, because they were the first things. And they are like, the building blocks, if you will, there's a lot you can do from them.
+
+This general utility is why coaches consider the kong vault a movement worth passing along, but many coaches were also quick to point out that if a traceur decided to never do a kong again in their entire parkour training career, they would still be doing parkour:
+
+> I don't think anyone needs to learn a kong, I still do not regularly use them because they're not comfortable for me. And I don't think that there's any minimum barrier for entry [...] So like, there's no minimum for doing parkour.
+
+In this way, a kong vault can be considered a fundamental, but not *essential*, parkour movement:
+
+> It's part of our vocabulary of movement. I think it's useful for everyone to know what it is and try it. If it doesn't work for you, I don't think that matters at all.
+
+This non-essential nature also relates to the application of the kong vault in a variety of environments. Participants stated that there are very few situations where a kong vault would be the *only* option available to a traceur and that substituting another movement was nearly always an option. For this reason, vault selection is mainly reliant on personal preference and choice. Nevertheless, other factors can still play a role in influencing that choice.
+
+### Obstacles and uses
+
+When describing the uses and goals of a kong vault, perhaps the most obvious one is common to all vaults in parkour---to simply clear an obstacle, to pass from one side of it to the other:
+
+> But I think the goal is to get people over the obstacle, and then they can work on whether they want to do, you know, a floatier version of it, or a precision afterwards, or any of those pieces, those I think, are sort of, more technical add-ons. But for me, just getting people over the obstacle in the pattern is sort of the first bit.
+
+In this regard the role of arbitrary choice for personal preference, fun, a particular challenge, or aesthetic effect in selecting a vaulting technique for a particular obstacle becomes important, as in practical effect any parkour vault will often serve the same function. The element of choice for fun, challenge, or aesthetics only was not dismissed by the participants but recognised as a valid part of technique selection:
+
+> People love kongs, I think. I mean, they look cool. I think they're an easy way to like impress people who don't do parkour. And they look like a lot of fun.
+
+This approach to seeking novel movement by choice rather than purely by environmental dictation echoes the challenge-seeking behaviour of traceurs identified by @Aggerholm2017. The kong was also identified as a uniquely parkour move, unlikely to be performed by those untrained in the sport:
+
+> Yeah, I think it also looks, it looks impressive, right? And I guess that goes hand in hand with the fact that your average Joe doesn't, if you want to like vault a fence, and you're quite a sporty person, and you've never really given it much thought, you're not going to do a kong, you're going to do a kind of step vault-y thing [...] You just swing yourself over. Yeah, you're not going to throw your legs between, you're not going to dive over it. So, I think there's an element to which the kong looks like something that an average person doesn't do. So it looks cool. And I think it's very elegant. You are kind of... there's a flying element in the motion.
+
+This aesthetic appeal was attributed to the primary spread of parkour via the internet in visual mediums:
+
+> And I think part of that probably also comes from, parkours lineage as an internet sport, where it was like a lot of people watching and copying [...] And so, you know, I think people probably like what it looks like in the air and what it looks like when it's photographed.
+
+> Kongs look good on camera.
+
+However there can still be several goals, such as the maintenance of speed across the obstacle, or the effective connection of the vault into another movement, that combined with the available environment can influence technique selection beyond arbitrary choice and prompt the use of a kong vault over another vault. Environment therefore influences and informs, rather than fully constrains, movement choice for a traceur.
+
+One important environmental influence identified for kong vault performance was obstacle height. Obstacle heights ranging from floor height to chest height were discussed, with waist height being the most common. Height was identified as a limiting factor due to the biomechanics of the vault:
+
+> Because of the nature of having to have your upper body lead. It's gonna be very, very difficult to get your hands and upper body above that obstacle, because you've actually got to get your hips above that obstacle, if it's any higher than that. So you know, you can imagine something that's at shoulder height, trying to get your hips up behind you that's higher than that wall. Yeah, it's going to be very difficult.
+
+However this was also mentioned as being an individual variable, dependant on the ability of the traceur:
+
+> The typical thing is, you know, like hip to waist height wall, going up and over. I mean, depending on your skill level, I look at something chest height and go hmm, probably not gonna be able to get over that very easily with a kong. But for some people, that's like, cool, no issue, could do that.
+
+> I think it is up to each individual. Because I've seen people do kongs that are extremely hard at like, our head height, the same of their head, and then just, and they kong up. I have no idea how they do it. I'm not familiar with that level. But I know it's possible.
+
+No lower height limit was particularly mentioned for the kong vault, but low obstacles were less likely to be vaulted as alternative options would be available:
+
+> Things again, can be very low. It, especially if you're going downwards, but just generally, that's not really done because there are better ways like jumping on it, you know, because anything lower than quad height is, yeah, you can jump over it.
+
+Low obstacles were mentioned as useful in training exercises or drills---down to exercises performed on a flat floor. Performing a kong motion over an edge, down to a lower obstacle, was also mentioned.
+
+Obstacles are also usually of a width that can be cleanly passed over in a single movement. The ability to pass wider obstacles than with other parkour vaults was mentioned, again due to the diving nature of the kong take-off:
+
+> And in order to, in order to overcome a longer obstacle, right? Because it's just more practical in that sense, that you throw yourself out there and you can manage it, in a way that you overcome that obstacle.
+
+Otherwise, beyond the practical obstacle dimensions of width and height, the vault could be performed on any number of surfaces and geometries:
+
+> It's really universal, I would say, because most of the time you can you can use it... in a sense, there are lots of variations of kong, you can you can use it in different ways on different materials, obstacles, rails, walls, I don't know, I used to do those in the school, through the desks [laugh].
+
+The only substantial distinction between obstacles made was between those that allowed a full, flat hand placement atop the obstacle and those too thin to do so, with rails given as the most common example. Thinner obstacles required more care during the diving portion of the kong vault to allow accurate aiming with the hands, and to correctly place the hand with the thumb around the obstacle to prevent slipping. Thinner obstacles also require an adjustment to the technique in the contact phase of the vault due to the change in hand position:
+
+> I also want to mention that rail kongs are a bit of a different animal, in that a rail kong, you have to change your approach and your running speed. And you have to pull as opposed to push, like if you try pushing on a rail, you're rolling the dice on your hands being perfect.
+
+> It really depends because in some cases, when you don't have a wall and you have a rail, suddenly you're stripped down with the ability to use your hands. So you can't use your hands that much. But the rail also has its advantages, so you can grab it [...] you can grab it and pull yourself and so there's this advantage that you don't really have with kongs on normal walls because you can't grip nothing. So you, with kongs on walls, you push yourself where in some cases with kongs on rails, you pull yourself.
+
+### Phases of movement
+
+Three main phases of movement were identified in execution of a kong vault---take-off, obstacle contact, and flight/exit phases. Each phase could vary in execution depending on the surrounding environment and the obstacle, but some common methods seem to have emerged and are considered intrinsic parts of the kong vault technique, predominantly in the take-off and obstacle contact phases.
+
+#### Take-off
+
+In the take-off phase, unlike in gymnastics vaulting where a static and predictable environment would always allow the same approach to the obstacle [@Mack2018], traceurs may find themselves entering a kong vault from a wide variety of circumstances. They may have plenty of space for a long run-up, be restricted to only a few steps, or even vault from a static standing position. As a result, the horizontal velocity of a traceur entering a kong vault can be equally varied. Two main take-off techniques seem to have emerged to enable performance of the vault from these varied horizontal velocities---the two-foot or *punch* take-off technique, and the *split foot* take-off.
+
+The two-foot take-off technique involves jumping from both feet simultaneously with the feet inline in the sagittal plane. Static standing starts are often conducted with this take-off approach as it allows power to be generated by the legs in a manner similar to a simple two-foot jump, but running starts can also enter this stance by bringing the feet together in the air from a running step to punch the floor together in a plyometric fashion. This take-off method can be considered similar to the punch take-off technique of a gymnastics vault but without the use of a springboard, and may therefore benefit from a similar focus on reduced contact time to achieve maximum flight [@Bradshaw2010].
+
+In comparison, the split foot take-off technique is used almost exclusively when approaching the vault from some form of moving start, even if only one or two steps. One participant described the common misconception of this take-off as a simple running take-off from one foot, when it is actually still a plyometric movement involving both feet jumping from the floor but from a split position and with a slightly staggered timing, described as a "gallop". This split stance is transitioned into from a run and involves a rhythmic timing of foot placement.
+
+The punch take-off was primarily identified as the technique most beginners would start with due to a reduced complexity in timing when transitioning from a run-up, and was also associated with use on taller obstacles or when trying to gain height in the vault due to the increased vertical forces generated from the jumping motion. Its use could also be dictated by preceding the vault with a movement requiring a two-foot landing or an environment where a split foot take-off was not an option, such as taking off from a thin rail. In contrast, the split foot technique was considered the preferred choice for take-offs if the environment allowed it. The reason identified for this primacy is that split-foot allows a smoother transfer of horizontal velocity into the diving phase of movement, avoiding the braking effect that a punch take-off can cause. Subsequently, the split foot take-off is most commonly used when maintenance of horizontal speed or achieving distance from the kong vault is a goal:
+
+> So I would say that, probably to go forward because it has to do with your momentum, punching will actually send you soaring, it'll send you up quite a bit. Punching will decrease your horizontal momentum. It's like, punching stops you and then you keep going. It re-translates it. So you know, the gallop allows you to kind of smoothly do it, you basically do what the punch is doing in two steps, and let the penultimate step kind of lower you even further and really prime you, and then that last step really launches you off. So it can happen more smoothly as you take off for the kong.
+
+Several participants identified dipping the body down before taking off to be an important part of the take-off technique, while also coordinating swinging of the arms behind the traceur prior to diving. The purpose of the dip was attributed to both power generation, similar to a counter-movement jump [@Linthorne2001], and to adjusting the projectile arc of the subsequent diving motion to enable a smooth transfer over the obstacle. Failing to dip could lead to a feeling of "coming down" onto the obstacle, associated with a feeling of strain or braking with the arms, rather than smoothly sailing over the obstacle in a clean arc. Similarly, swinging the arms behind the traceur during approach and then forward into the diving motion contributes to the forward momentum at the time of take-off, with a common beginner mistake identified as running with the arms outstretched in front throughout the approach.
+
+One significant consideration in the approach phase is the distance from the point where the traceur will be leaving the ground to the obstacle itself. While most of the time the traceur will be taking off within arms reach of the obstacle, the diving nature of the vault allows there to be considerable distance covered in the air before the hands make contact with the obstacle for the next phase of the vault. This distance will primarily play a role in the projectile arc of the vault, with greater distances resulting in obstacle contact during later periods of the projectile arc when the traceurs centre of mass will be descending rather than ascending.
+
+As each successive phase of vaulting performance relies on performance in the preceding stages [@Takei2007], actions within the remaining phases of the kong vault are strongly determined by the take-off phase. All of these considerations and methods for take-off fundamentally seem designed to influence three factors---the velocity of the traceur, the projectile arc over the obstacle and onto the landing target, and the position of the body in the air.
+
+#### Obstacle contact {#obstacle-contact}
+
+The obstacle contact phase begins when both hands land on top of the obstacle following the dive phase. Both hands should contact the obstacle at the same time with the arms approximately shoulder-width apart. Whilst little detail was given on the exact positioning of the hands themselves, it was mentioned that traceurs should avoid vaulting with "steepled" fingers where only the fingertips make contact with the obstacle surface and instead maintain a flat hand to avoid risking injury. 
+
+The precise action of the arms on an obstacle was unclear, with some participants describing the action as a "push" and others as a "pull", or even some combination of the two. One participant highlighted the motion as a "scooping" action, sweeping the arms from shoulder flexion down into shoulder extension with a straight elbow, analogous to the motion of a lat pulldown or front lever exercise.  Descriptions of this action also changed when discussing performing the vault on rail obstacles, as the ability to grip the rail fully with the hand seemingly allows a stronger pulling action with the arms, while a flat hand felt more like a push. 
+
+Participant responses also varied on the degree to which this motion contributed to the execution of the kong vault. Some participants felt they could generate significant power with the upper body to go further or faster with their vault, while others felt it contributed only slightly. This disparity may be a function of existing horizontal velocity at the time of obstacle contact, with faster take-offs requiring less energy contributions from the upper body while the action of the arms can bolster slower take-offs. The exact relationship between take-off speed and upper body contributions to overall speed or momentum in the kong vault currently remains unclear.
+
+Regardless of contributions to speed or distance, the obstacle contact phase serves an essential function in adjusting the position of the body in the air ready for landing. As part of the diving phase of the take-off, the traceur will have rotated themselves forward in the sagittal plane, raising their hips. The degree of rotation and height of the hips will vary according to the demands of the obstacle, but participants mentioned that raising the hips to be in line with or above the shoulders was commonplace. The contact with the obstacle provides the traceur an opportunity to correct this rotation, partly through the mechanical action of the arms and partly through the tucking of the knees to the chest providing a counter-rotation to the dive. Again, the degree of counter-rotation required will depend on the desired landing strategy of the traceur, but will most likely require a return to an upright bipedal position with the chest raised and the feet under the body.
+
+The precise amount of space required above an obstacle to clear it depends partially on the anatomy and flexibility of the individual traceur and partially on the projectile arc taken in flight over the obstacle. A particularly flexible traceur with long arms may be able to kong an obstacle without removing the hands from its top surface at all---a movement sometimes referred to as a hybrid kong and dash vault known as a "kash vault" [@Henry2017]---while other traceurs may require an action described as a "pop" with the hands to gain some extra vertical space to pass their lower limbs through.
+
+#### Flight and exit
+
+The take-off and obstacle contact phases, combined with some body adjustments in flight, set up the traceur to perform their goal, whether that be a two-foot precision landing, landing on a single foot for a run or stride motion, or even landing with the hands in a cat leap position or a second kong motion for a movement known as a "double kong". As a result, the flight and landing phases of the kong vault are more difficult to encapsulate than the preceding phases as there is less standardisation in performance. However, in considering the utility of the kong vault in setting a traceur up for a wide variety of landings, there may not be a need to capture every permutation of landing a traceur may attempt from a kong vault but instead to consider the exact point at which a kong vault ends and the subsequent movement begins.
+
+While further adjustments to the orientation of the body in the air are possible following the obstacle contact phase, as an object in flight the traceur is effectively set on their projectile arc once their hands leave the obstacle. The next meaningful contact will be with whatever target and using whichever movement the traceur has set for themselves. In effect, following the obstacle contact phase, the vault part of the movement is over and the traceur can instead be considered to be entering the approach phase of the following movement.
+
+As an example, one of the most common applications of a kong vault is the "kong precision", wherein a traceur kong vaults over an obstacle to land and remain ("stick") on another obstacle on the other side. As one participant pointed out, landing from a kong with a precision landing is no different to landing from a standard jump:
+
+> Landing is just, most of the time it's not a problem because landing is, it's not a specific technique [...] like specifically to kongs, because landing is like a general thing that you need to master but then it is kind of not the point which is just really crucial to the kong itself [...] if you can do good precisions and rolls and if you're just strong enough to do these things, I think that it will just adapt to the vault itself.
+
+Students do not learn specific kong landing techniques, but instead a variety of landing approaches across their parkour training that can be utilised following the flight phase of a kong vault as required. Consideration therefore becomes the optimal setup of flight path and body position following obstacle contact to achieve the desired landing.
+
+Disengaging specific landing techniques from the kong vault allows any goal that a traceur may desire from a kong vault to be analysed by considering the adjustments in take-off and obstacle contact phases that can be made to achieve that outcome, regardless of the exact nature of the outcome itself. As a result, no attempts are made to prescribe kong vault use or outcomes to the parkour community via a model outcome, but instead traceurs, coaches, and researchers are left to substitute in goals or outcomes as they wish.
+
+## Deterministic model of the kong vault {#model}
+
+In constructing any deterministic model, consideration must be given to the objective placed at the top-most level [@Hay1988]. Several common outcome measures were identified from the interview data as possible candidates---for example, simply clearing the obstacle, maximising distance, or linking to the next movement. Upon reviewing potential models using these candidates, it became apparent that they were all governed by the same things: the projectile motion and body positioning of the traceur in flight, which in turn are influenced by actions taken in the prior phases of the vault. Subsequently, if a traceur can identify an optimal projectile arc and body position for a certain desired goal or outcome, they can apply the stages of the deterministic model that contribute towards achieving that outcome. Therefore, the optimal projectile arc and body positioning factors combine to form a top-most objective for the kong vault that can be referred to as "advantage", considered in this context as "advantageous to the desired landing or next movement to be performed". The derived deterministic model for the kong vault using this approach is presented in Figures \@ref(fig:model-arc) (projectile arc) and \@ref(fig:model-body-pos) (body position).
+
+
+```{r}
+if (git) {
+  knitr::opts_chunk$set(out.width = "100%")
+}
+```
+
+<!-- Will explicitly start a new page and rotate to landscape, without page numbers -->
+
+\blandscape
+\thispagestyle{empty}
+
+<!-- Or comment out the above and just use fig.env="sidewaysfigure" in chunk options to just rotate content and not page, keeping page numbers. Will be treated as a regular float and placed accordingly -->
+
+(ref:model-arc-cap) Proposed deterministic model for an advantageous projectile arc for a given target from a parkour kong vault.
+
+(ref:model-arc-alt) Proposed deterministic model for an advantageous projectile arc for a given target from a parkour kong vault. The top-most box is termed 'advantage', broken down into two explanatory variables - the projectile arc of the athlete, and their body position in the air. This image further breaks down the variables for projectile arc, most prominently the velocity at take-off, the changes made to that velocity by take-off technique, and the further changes to the projectile arc that can be made during hand contact with the obstacle. Environmental factors, such as obstacle or target landing height, are also included.
+
+<!-- Reference with \@ref(fig:model-arc)-->
+
+```{r model-arc, fig.cap="(ref:model-arc-cap)", fig.scap="Kong vault projectile arc deterministic model", fig.alt="(ref:model-arc-alt)", message=FALSE, warning=FALSE, echo=FALSE, include=TRUE}
+
+if (!git) {knitr::include_graphics(here::here("book", "assets", "imgs", "model-arc.pdf"))} else {knitr::include_graphics(here::here("book", "assets", "imgs", "png", "model-arc.png"))}
+
+```
+
+<!-- Comment out next 2 lines if using sideways figure env -->
+\clearpage
+\thispagestyle{empty}
+
+(ref:model-body-pos-cap) Proposed deterministic model for advantageous positioning of the body for a given target during a parkour kong vault.
+
+(ref:model-body-pos-alt) Proposed deterministic model for an advantageous projectile arc for a given target from a parkour kong vault. The top-most box is termed 'advantage', broken down into two explanatory variables - the projectile arc of the athlete, and their body position in the air. This image further breaks down the variables for the body position of the athlete in the air , mainly as the requirements dictated by the chosen landing or next movement, and how the athlete begins and modified their angular momentum in the air while diving in take-off and during hand contact with the obstacle.
+
+<!-- Reference with \@ref(fig:model-body-pos) -->
+
+```{r model-body-pos, fig.cap="(ref:model-body-pos-cap)", fig.scap="Kong vault body position deterministic model", fig.alt="(ref:model-body-pos-alt)", message=FALSE, warning=FALSE, echo=FALSE, include=TRUE}
+
+if (!git) {knitr::include_graphics(here::here("book", "assets", "imgs", "model-body-pos.pdf"))} else {knitr::include_graphics(here::here("book", "assets", "imgs", "png", "model-body-pos.png"))}
+
+```
+
+<!-- Comment out next line if using sideways figure env -->
+\elandscape
+
+```{r}
+if (git) {
+  knitr::opts_chunk$set(out.width = "80%")
+}
+```
+
+
+### Projectile arc {#proj-arc}
+
+The projectile arc of the kong vault can be considered in two stages: the arc of the dive from the take-off point to contact with the hands on the obstacle, and the arc of the flight from the obstacle to the point of landing. Though distinct, these two arcs cannot be considered completely independent, as many of the variables influencing the flight projectile arc are determined at the point of take-off for the dive. Therefore, the proposed model considers the obstacle contact phase to be making changes to the existing dive arc, rather than consisting of distinct landing, reset, and re-launch steps. The factors affecting the projectile arc of the dive, from the point of take-off to the point of obstacle contact, are therefore similar to those affecting any object undergoing projectile motion: the angle of launch, the velocity at launch, and the relative height of the target.
+
+Horizontal velocity has been identified as one of the most influential variables in achieving distance in long-jumping analysis [@Graham-Smith2005] and may similarly play an important role in modulating distance travelled in the flight phase of a kong vault. Launch velocity is determined by the existing velocity of the traceur immediately prior to take-off---which is, in turn, most likely determined by the surrounding environment and the preceding movement---and the adjustments to that velocity made during the take-off itself. These adjustments are in turn dictated partially by the take-off technique  used, which has a subsequent effect of changing the efficacy of the transfer of horizontal velocity into the vertical velocity required, but also by the mass of the athlete, their ability to dip into a counter-movement, and their lower body strength in propelling themselves from the ground. For a given desired take-off velocity, a traceur with little-to-no existing velocity may need to accelerate with a large counter-movement dip and drive with the lower limbs during the punch or split-foot stance. In comparison, a traceur with ample run-up space in their environment may be able to sprint into their vault with marginal additional acceleration required from the lower limbs, focusing instead only on efficient transfer of that velocity into the vault:
+
+> Yes, and the speed is an important thing, so if there is not enough run up for you to generate the speed from, if you have a wall, you can push yourself out to generate more speed.
+
+Once in the air, the human body has a low drag-to-weight ratio and can be considered an object in free-flight [@Linthorne2006]. Gravity will affect the vertical acceleration and velocity of the traceur but, if no obstacle contact were to occur, the horizontal velocity of the traceur would remain constant from take-off until landing [@McGinnis2013]. Obstacle contact is therefore a second opportunity for the traceur to effect change upon their velocity. Modulating velocity through contact with an obstacle in the air was found to be an inherent strategy of arboreal agility in an animal study by @Hunt2021 that described the "parkour leaping strategy" of squirrels, with initial velocity even predicting the degree of change enacted. Traceurs may experience a similar situation, with the degree of effort required to accelerate using the upper limbs dependent on the existing velocity of the dive. A faster dive may require minimal contribution to velocity from the upper body, while a slower dive could benefit from additional power. How much the upper or lower body each contribute to the overall velocity of the vault is unclear, although participants did clarify that neither one is necessarily technically preferable and is seemingly situational:
+
+> You can get power from both, and I wouldn't say that it's preferable to generate power from your upper body versus your lower body. And I wouldn't say that it's necessarily even one plays a larger role than the other. It's, which one allows you to be most effective in your movement?
+
+One further consideration for the obstacle contact phase is the width of the obstacle to be vaulted and the trade-off between accuracy and speed in ballistic skills [@Molina2019]. A thin obstacle such as a rail that requires a higher degree of accuracy with the upper limbs may require a comparably slower take-off to target effectively. This may also explain why participants described the action on a rail to feel like more of a pulling motion---a slower take-off would require a greater contribution from the upper limbs to generate velocity.
+
+
+The optimum launch angle from take-off may be determined arbitrarily by traceur choice derived from experience, with some participants describing a  "sweet spot" of distance to begin diving for a kong vault where the movement flows smoothly over the obstacle:
+
+> It doesn't look like there's a huge amount of energy and effort being expended at the moment of lifting off or impact or pulling or anything like that. It all looks like one fluid movement that requires the same amount of effort.
+
+This ideal take-off distance may indicate the important role that the point in the dive projectile arc that obstacle contact occurs plays in determining the changes in flight path required to reach a target (see Figure \@ref(fig:example-proj-arcs), A and B). Contact late in the dive arc means the traceur may be descending onto the obstacle with an increased degree of forward rotation, requiring more upper body engagement to either correct body position or alter the projectile arc to reach the target. Contact during the ascending stage of the dive projectile arc may require little upper body engagement at all, merely assisting in body orientation during flight. While it therefore may be considered preferable to make contact early in the dive, this may not always be in direct control of the traceur due to environmental constraints such as obstacle height or location (see Figure \@ref(fig:example-proj-arcs), C and D). 
+
+(ref:example-proj-arcs-cap) Example kong vault projectile arcs. A - obstacle contact occurs late in the dive arc to reach a far target and requires adjustment to extend flight. B - obstacle contact occurs early in the same dive arc as A, but take-off adjustments have aligned the dive arc with the target and little adjustment is required. C - obstacle contact in a high, narrow dive arc from a close take-off that requires adjustment to reach target. D - a low and elongated dive arc from a far take-off on a low obstacle that requires adjustment to reach a close target.
+
+(ref:example-proj-arcs-alt) Diagrams illustrating different possible kong vault projectile arcs. A - obstacle contact occurs late in the dive arc to reach a far target and requires adjustment to extend flight. B - obstacle contact occurs early in the same dive arc as A, but take-off adjustments have aligned the dive arc with the target and little adjustment is required. C - obstacle contact in a high, narrow dive arc from a close take-off that requires adjustment to reach target. D - a low and elongated dive arc from a far take-off on a low obstacle that requires adjustment to reach a close target.
+
+<!-- Reference with \@ref(fig:example-proj-arcs) -->
+
+```{r example-proj-arcs, fig.cap="(ref:example-proj-arcs-cap)", fig.scap="Example kong vault projectile arcs", fig.alt="(ref:example-proj-arcs-alt)", message=FALSE, warning=FALSE, echo=FALSE, include=TRUE, fig.pos="bt"}
+
+if (!git) {knitr::include_graphics(here::here("book", "assets", "imgs", "proj-arcs.pdf"))} else {knitr::include_graphics(here::here("book", "assets", "imgs", "png", "proj-arcs.png"))}
+
+```
+
+\FloatBarrier
+
+Even in situations where environmental constraints restrict launch angle it can still be optimised by adjustments to take-off technique, with the punch style take-off in particular attributed to vaults that require a more vertical component such as a high obstacle or a take-off point close in proximity to the obstacle. As theorised by participants, this may also be the secondary function of the dipping motion during take-off on lower obstacles, providing not only a counter-movement to generate jumping power but also lowering the traceur to adjust the projectile launch angle:
+
+> You want to be at a low point when you get into your penultimate and final step, which are going to ultimately determine your trajectory and how much power you're going to get for the kong.
+
+Similar to velocity, the amount of change to their flight path that a traceur can induce during obstacle contact is unclear. As mentioned in Section \@ref(obstacle-contact), the motion the upper limbs perform on the obstacle is not clearly described or agreed upon and may change from one kong vault to another:
+
+> It really depends. I would say, it's pushing when I want to go up, it's pulling when I want to go far or mostly down, like for the... yeah, it's very different. And it just taps when I want to get over.
+
+In situations where an adequate launch velocity and angle can be performed to chart a projectile arc cleanly over an obstacle to a target, then minimal change in arc during obstacle contact may be required (as in Figure \@ref(fig:example-proj-arcs), B). At other times, environmental or physiological constraints may require a larger degree of change during obstacle contact, but the mechanisms and possible magnitudes of this change are only theorised even by experienced parkour coaches.
+
+### Body position
+
+The upper limbs play a greater role in the "Body position" arm of the proposed model (Figure \@ref(fig:model-body-pos)), with obstacle contact providing an opportunity for the traceur to reorient their body in space following the dive phase. In rotating the body forward in the sagittal plane during the dive arc the traceur may require less vertical displacement than a standard hurdle or box jump to clear an obstacle, particularly if obstacles are above approximately waist height. Instead, the lower body is raised behind the trunk to pass over the obstacle before being lowered---usually---back to the floor on the other side while the upper body undergoes relatively little vertical displacement (see Figure \@ref(fig:vert-displacement)). This is described as having the dual effect of requiring less energy or effort to perform and reducing the landing impact on the far side of the obstacle:
+
+> So when we're going over an object, we do not want to go any higher than necessary, as we go over that object, because it's a waste of energy, it also means that we're gonna have a higher impact when we land on the other side, which we then have to absorb before we're able to effectively return to our gait.
+
+(ref:vert-displacement-cap) An example of the differences in vertical displacement between a kong vault and hurdle of the same obstacle.
+
+(ref:vert-displacement-alt) A diagram of the differences in vertical displacement between a kong vault and hurdle of the same obstacle. When hurdling an obstacle, the upright body position means the head and centre of mass rise higher than when the athlete rotates their body forward and tucks their legs in to their chest to clear an obstacle with a kong vault.
+
+<!-- Reference with \@ref(fig:vert-displacement) -->
+
+```{r vert-displacement, fig.cap="(ref:vert-displacement-cap)", fig.scap="Differences in vertical displacement between kong vault and hurdle", fig.alt="(ref:vert-displacement-alt)", message=FALSE, warning=FALSE, echo=FALSE, include=TRUE}
+
+if (!git) {knitr::include_graphics(here::here("book", "assets", "imgs", "vert-displacement.pdf"))} else {knitr::include_graphics(here::here("book", "assets", "imgs", "png", "vert-displacement.png"))}
+
+```
+
+However as a consequence of this forward rotation, the traceur will find themselves contacting the ground head-first without correction. Obstacle contact acts as the point where counter-rotation to the dive takes place and, as described in Section \@ref(proj-arc), the point in the dive arc at which obstacle contact occurs may play a role in the degree of counter-rotation required.  Mostly, this correction seems to be a result of either the hands pushing away from the obstacle or, with the "scooping" motion also mentioned in Section \@ref(proj-arc), potentially a result of fixing the hands on the obstacle and pulling the hips back towards the hands in a reverse front-lever motion. The counter-rotation is also assisted by the tucking in of the knees to the chest, reducing the moment of inertia in a manner similar to a figure skater pulling their arms in while spinning, allowing the athlete to rotate with greater angular momentum in a shorter amount of time [@King2000]. Some rotation of the arms from the shoulder may also play a lesser role in adjusting the angular momentum of the traceur in the air.
+
+Rotating the chest upright is an integral part of bringing the hips and feet back underneath the traceur for a precision landing, to return to a running gait, or even to land in a cat-leap position, but this may not always be the goal. A traceur may instead desire to continue their forward rotation to perform a front somersault, or to land with their hands on another obstacle to perform a roll or even a "double-kong", wherein they remain inverted throughout the flight phase before landing hands-first on a second obstacle that then provides the opportunity to reorient the body upright. All of these outcomes can be accommodated by the model, and when combined with optimising for a given projectile arc, any goal in any environment can be substituted in at the top-most level. With this approach, the model attempts to avoid restricting a diversified use of the kong vault but rather provide guidance as to the contributing variables of performance for the vault in any given scenario.
+
+## Limitations
+
+There are several drawbacks to the kong vault model proposed. In attempting to avoid constructing the model in a manner that could be considered prescriptive, identifying the optimal projectile arcs and body positioning for a desired outcome is left to the traceur, coach, or researcher to determine for themselves. Similarly, there may be more than one projectile arc or body position that still achieves a goal or outcome [@Bartlett2007] and this model provides no method to aid in determining if one is superior in some manner to the other. The task of determining optimal projectile arcs and body positioning may therefore be complex and open to some interpretation, and in effect, relies upon existing knowledge or experience to understand the best approach for a particular outcome. As such, this model may not be helpful to beginners or in application to brand new environments or outcomes. These shortcomings are viewed as necessary to balance the desire to protect the broad scope of parkour practise and the need to bridge the gap between empirical and theoretical understandings of parkour movements.
+
+When considering the data synthesis process that informed the construction of the model, the researcher's active role in understanding and interpreting the interview responses must also be acknowledged as a potential source of bias. At the time of analysis, the researcher was a student at London Metropolitan University undertaking a Masters degree in Sport and Exercise Science and had previously conducted research into the ground reaction forces resulting from three common parkour vaults in completion of a Bachelors degree in Sports Therapy [@Adams2020]. Before attending London Metropolitan University, the researcher had 5 years experience as a parkour coach with Parkour Generations in London, UK, having trained in parkour with Parkour Generations for approximately 3 years before becoming a coach. As such, the researchers own learning and understanding of the kong vault prior to this study is influenced primarily by his training with Parkour Generations. Parkour Generations has a direct connection to the early founders of parkour with one of the company founders, Stéphane Vigroux, widely considered to be the inventor of the parkour kong vault. Although not actively coaching with Parkour Generations when the researcher began his parkour training, many of the coaches the researcher did train with at Parkour Generations were directly coached themselves by Stéphane. While no conflicts arose between the researcher's prior understanding of the kong vault and the responses given in interviews, the researcher's background may still have influenced the analysis process and subsequent model development.
+
+Finally, in appraising the data collected to inform the model, it should not be considered that the 15 participants interviewed represent the sum total of athlete and coach experience of the kong vault. The consistency of responses received lends some credence to the universal applicability of the descriptions given. However, it still must be noted that only English speaking participants took part (though not necessarily as a first language), predominantly from the USA and mostly male. Such narrow scope for a sport as diverse as parkour should be considered with caution, and further work must be done to refine this model in partnership with the broader parkour community.
+
+## Future studies {#future-studies}
+
+The proposed deterministic model reveals many relationships between contributing variables in the kong vault that can be considered for future study. Positioning the obstacle contact phase as primarily making changes to an existing diving projectile arc questions the exact role the upper limbs play in the kong vault, how these changes are applied as either a "push" or a "pull", and what magnitude of change can be effected. These uncertainties were echoed by many of the participants when asked what aspects of the vault they would like to know more about: 
+
+> What is the contribution of the upper body to the total force applied during a kong vault, right? So like, if you could look at, you know, force plate on the ground, force plate on the hands and say, you know, how much of the the distance attained, how much of the total force was contributed by the lower body versus the upper body? That'd be quite interesting to me.
+
+Similarly, the interplay between the existing velocity of a traceur from their approach to the vault and the effort required in both take-off and obstacle contact phases to achieve distance was mentioned by multiple participants as something of interest. In particular, curiosity regarding how a number of elite-level traceurs performed kong vaults with large flight distances was expressed:
+
+> I would really be interested in knowing a little bit more of like, how the technique changes through the different speeds, you know what I mean, if you look like someone like [athlete name], like, he can fricking [sic] fly, you know what I mean? And I think it's in part with how comfortable he is with his acceleration into the catpass. And then that transference of it, and I think that's like, for me, that's my least practised part, you know, would be maximal effort running into catpass.
+
+The question of energy efficiency in using a vault over a simple hurdle jump may also be usefully investigated.
+
+One noted aspect of body positioning highlighted by all four female participants in the study was an increased level of difficulty in raising their hips high enough behind them to enable the forward rotation required in the dive phase of the vault to clear an obstacle. This was attributed to both differences in weight distribution between the hips and shoulders, and height differences relative to common vaulting obstacles:
+
+> I'd be interested to find out more about the potential gender divide of how people approach learning the kong vault, or the difficulties or struggles they have with the kong vault. Like I have some theories, there's a certain amount of, I think, anatomically, because women carry more weight and our centre of gravity is lower. That helps us with balance, but I think it's harder for kong vault than with men, because your centre of gravity is in your chest. It's easier for you to lift your hips.
+
+This difficulty was also believed to be exacerbated by the design of parkour spaces and coaching drills focused on male physiques:
+
+> I also think that, I am quite small. And one thing that I run into all the time is our vault boxes are designed by people who are six feet tall, and also have been training for 15 years, and they look very approachable to them. And to me, you know, they're they're twenty percent larger than they are for anyone else. And so, for me, a large part of making it work was finding an environment that was designed for me, that made more sense for my body. And I think it happens a lot of people in particular, we're like, the space is designed for the sort of traditional parkour practitioner and the rest of us sort of muddle through as best as we can.
+
+Traceurs are predominantly young and male [@Pagnon2021], with parkour training environments perceived as traditionally masculine spaces [@Wheaton2016]. The biomechanical disparity between genders in the kong vault, the relationship between athlete and obstacle heights, and the forces required to achieve a certain hip elevations, could all be appropriate areas for further investigation with motion analysis. In the interim, parkour coaches may wish to consider obstacle height as a factor in controlling difficulty when teaching the kong vault and, further, how purpose-built parkour environments can be made more inclusive spaces for all genders, particularly as parkour undergoes increasing "indoorisation" [@Bottenburg2010].
+
+# Conclusion
+
+The sampling of expert knowledge regarding the kong vault has provided a broad yet detailed overview of a movement that can be performed with a high degree of variability within a dynamic range of environments. Subsequent analysis of this overview has led to the development of a deterministic model intended to assist in the understanding of the kong vault in application to highly individual or situational outcomes, rather than comprehensively prescribing objective performance. The model positions the kong vault as consisting of distinct take-off, obstacle contact, and flight phases, each with their own variations within but allowing subsequent connection to any following landing or movement. Flight is primarily determined by the actions taken in the take-off and obstacle contact phases, with obstacle contact itself making only moderate changes to an already existing projectile arc but expressing a greater change in angular momentum of the athlete. The optimal outcome of the kong vault can therefore be considered as achieving a projectile arc and body position that effectively places the traceur in as advantageous position as possible to efficiently and consistently perform a given landing or movement.
+
+\newpage
+
+```{r, child=if (git) here::here('book', 'src', '_supporting-chaps.Rmd')}
+```
+
+\thispagestyle{empty}
+
+\part{Supporting chapters}
+
+\renewcommand\thesection{\Alph{section}}
+
+\newpage
+
+
+# Textual analysis of interview transcripts
+
+```{r}
+if (git) {
+  knitr::opts_chunk$set(out.width = "90%")
+}
+```
+
+```{r, child=here::here('book', 'src', '_text-analysis.Rmd')}
+```
+
+
+# Learning and coaching the kong vault {#sc-lac}
+
+Some of the interview themes identified in Figure \@ref(fig:themes-diagram) did not directly contribute to the descriptive overview or deterministic model of the kong vault, but provided background information or context to the participants own understanding of the movement. These themes and the data within may still be of interest to coaches, traceurs, or researchers interested in how the kong vault is learnt and coached, and are presently summarised in this chapter.
+
+## Learning sources
+
+The majority of participants taught themselves the kong vault at first, with only three participants receiving any form of coaching as a beginner and one participant learning from members of their parkour community informally. All other participants first tried the movement after only seeing it on video, either as a performance or from a video tutorial on YouTube. The "Tapp Brothers" YouTube channel was the most frequently mentioned video tutorial source. However even when self-taught, all participants further developed with either community guidance or formal coached classes at a later date. Social exchange of guidance for the technique is an important part of how traceurs learn parkour movements:
+
+> It's almost like social, like it sounds funny, but it's almost like when you train with a group, it almost is like social cohesion, like, everybody has good tech, you know, or you try to have the right tech. And, yeah, I think that it kind of just comes from social understanding within our community. Like, it's just kind of learned, you visually pick it up.
+
+This social exchange most often occurs in person in local communities, but travel was also particularly referenced as an important way for a traceur to develop:
+
+> People maybe outside of your circle was, at least for me, what was the most most valuable thing, because you know, if you're training with a community, well, the community will start to naturally kind of coalesce, and there'll be a similar style or a similar thinking that happens in there [...] Because people were training together, and they're sharing those ideas, most of the ideas that get connected, so I think it's super good, travelling, to learn and share like that.
+
+Although the internet can also facilitate this wider social exchange:
+
+> You know, if a lot of people who start now just watch Instagram videos, and if you watch enough Instagram videos of people doing parkour, you can see what those techniques should look like.
+
+
+
+
+## Learning experiences and fear {#sc-lef}
+
+Participants described a mixed experience of difficulty in learning the kong. Some participants took to the movement immediately, while others found it harder to learn. This disparity of experience was also reflected when discussing the learning journey of students:
+
+> I think it depends on the person and kind of your movement history. Because some people have no issue at all learning it. And some people like myself, it took me several years to kind of get used to that, because I really had a problem with diving for it and popping my hips high enough and trusting like my push would be enough.
+
+Trouble learning the kong vault sometimes occurred because of physical difficulties---particularly for female participants as described in Section \@ref(future-studies)---but more often due to mental barriers. Fear of injury was a common factor, with even coaches that did not experience fear in their personal learning journeys still describing it as an issue they frequently had to deal with in students. This was attributed to the unfamiliar, head-first diving nature of the movement, which requires full commitment from the athlete:
+
+> You can't really kind of learn the kongs slowly. I mean, you can practice jumping up onto the obstacle, sort of konging up to it, but actually doing the dive part where your legs follow through and continuing, you know, continuing the flow of movement. You can't really do in slow motion. You have to, you have a moment of trust.
+
+The need to trust the arms to bear full body weight may also be a new experience for a beginner:
+
+> Number one is trusting your arms to take your bodyweight while your hips are above the wall. So you're essentially in sort of like mid-kicking-up of a handstand position. Where you're sort of leaning over on your hands, your shoulders are level with your hands. But now you're kind of jumping up behind you. And a lot of people are worried because if they go a little bit too far, they're gonna feel like their head, they're going to go head first. And obviously it's very understandable, it's like something that we don't do very often, unless you're doing handstands and things. So kind of getting used to that is difficult.
+
+One common coping strategy was to allow only one hand to come away from the obstacle, swinging the legs around the remaining arm instead of remaining fully in the sagittal plane. Keeping a connection to the obstacle in this way provided some security against falling head-first to the floor. When looking to overcome fear in the kong vault, participants most often described learning or coaching the kong vault on an obstacle without a drop on the far side, such as a staircase or very wide block. This variation of the kong vault is sometimes named a "pop-on" or "kong-up" vault. This allows the learner to practise the kong motion, replacing their hands with their feet on the obstacle, without the risk of falling any appreciable distance. Learners can progress this movement by trying to propel themselves further and further beyond their hands until eventually they are travelling a distance that can give them confidence in their ability to clear an obstacle:
+
+> Another one I like, instead of going over a box or wall that's thinner, is trying to work on something that's a little bit wider and pop your feet as far as you can. Because that really works the push, and that works well for most people once they can get their feet on top of the box, and then get the feeling of the push, they'll start to really get that and doing that before they have to worry about getting over I think helps a lot. Because then you're less concerned about what your feet are doing because you can see, oh I'm getting them pretty far, further than the width of this little box or wall is, now that I can get over.
+
+The kong-up drill can be performed with many regressions or progressions to aid in technique, strength, or mobility development as required, such as focusing on raising the hips or getting only a single leg onto the obstacle. The kong motion can also be drilled on the ground, but this was mentioned as more of a physical drill, aiding less with mental barriers. Once a traceur is comfortable clearing an obstacle with the kong vault---usually obtained through large amounts of repetition---further skill development then becomes a process of refinement and challenge, increasing variables such as speed, obstacle height, or dive distance.
+
+## Coach development and technique guidelines
+
+When transitioning into coaching, nearly all participants described undergoing a necessary updating of their methods to accommodate a wider variety of learners. They would not disregard their own method of learning the kong vault entirely, but expand and improve upon it. This development occurred in exchanges with other coaches or traceurs throughout their coaching career---the "social milieu" described by @Stoszkowski2016---but was also often simply a result of experience and experimentation:
+
+> I would say it mostly developed when I first started classes, and then it came back around more into a conversation topic when I started coaching and had to teach it again. I would watch people who were learning, I'd watch them go through the vault, and then break it down with the other people who wanted to learn.
+
+Participants described the lack of coaching guidelines for the kong vault---and parkour in general---as a potential issue as the sport gains greater mainstream appeal. While the general parkour coaching community appears to have mostly converged on basic drills for kong vault instruction---such as the pop-on movement described in Section \@ref(sc-lef)---the finer points of technique or the exact adjustments an individual student may need to make are left to individual coach judgement:
+
+> Every so often you get like a difference of what needs to be fixed between two coaches, and one student. So say, for instance, me and one of my co-workers would be working with a student on their kong vault. And, you know, I could say, Oh, you need to go back to your progressions, you need to learn about how to get your speed or get your hips up. And then my coworker could say, No, you just need more speed, you know, sometimes it just differs on what we're seeing how we're seeing it.
+
+When asked, participants were open to the idea of coaching guidelines for parkour movement being created, with the caveat that they would be guidelines, not rules. Individual variation and diverse practise mean that guidelines would not be able to encompass all learning journeys for parkour techniques fully, but could provide generic guidance to aid in ensuring student health and safety in parkour classes, particularly for less experienced coaches:
+
+> You know, I think if you're new to coaching, or even if you're an experienced coach but you're just looking to draw on other resources, if you want to experiment with a new way of coaching, or maybe you've run into kind of a difficult point with, you know, teaching it to a certain group or a certain person, then yeah, I think that would be beneficial. I can't see any reason that it would be a negative thing, really, except if it attempts to sort of proclaim a proper way of teaching. And that's something that very sort of, I would be appalled at actually you know, if someone were to say, Okay, this is the way to teach, and you cannot teach it any other way. This is the proper way. That's that goes against the entire spirit of parkour. Right, that goes against, you know, all of the all of the foundations of the discipline. So that would be very upsetting for me to see that, you know, yeah. I think just an opening. Here's some ways to teach it. Some ideas, some practices. Yeah, that would benefit everybody.
+
+## Summary
+
+The kong vault was mostly self-taught amongst study participants but later refined with formal or informal guidance from other traceurs. Social exchanges alongside personal experience and experimentation are believed to strongly contribute to a traceurs development of their technique and coaching styles. Mental barriers such as fear of injury are common when learning the kong,  and some universal drills appear to have become established in the parkour coaching community to help combat these fears alongside physical skill development. Parkour coaches are open to the idea of coaching guidelines, provided they are intended to aid rather than prescribe coaching methods. These details provide context to the general overview of the kong vault (see Section \@ref(overview)) and deterministic model (see Section \@ref(model)) proposed in this study, in particular in positioning the kong vault---and parkour techniques in general---as both communally defined yet intensely personal in their understanding and execution.
+
+\newpage
+
+```{r, child=if (git) here::here('book', 'src', '_refs.Rmd')}
+```
+
+\thispagestyle{empty}
+
+\part{References}
+
+\newpage
+
+::: {#refs}
+:::
+
+\newpage

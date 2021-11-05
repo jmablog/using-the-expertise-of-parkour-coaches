@@ -1,0 +1,535 @@
+```{r text-analysis-setup, include=FALSE}
+
+library(dplyr)
+library(tidyr)
+library(magrittr)
+library(readr)
+library(stringr)
+library(tidytext)
+library(ggplot2)
+library(forcats)
+library(ggthemr)
+library(ggtext)
+library(patchwork)
+library(purrr)
+library(glue)
+library(scales)
+library(igraph)
+library(ggraph)
+library(widyr)
+library(topicmodels)
+library(quanteda)
+library(quanteda.textstats)
+library(quanteda.textplots)
+library(quanteda.textmodels)
+library(sentimentr)
+
+lines <- read_csv(here::here("data", "transcripts-by-line.csv")) %>% mutate(partid = factor(partid))
+words <- read_csv(here::here("data", "transcripts-by-word.csv")) %>% mutate(partid = factor(partid))
+words_no_stops <- read_csv(here::here("data", "transcripts-by-word-stops-removed.csv")) %>% mutate(partid = factor(partid))
+participants <- read_csv(here::here("data", "participants", "participant-characteristics.csv")) %>% rename(partid = part_id) %>% mutate(partid = factor(partid))
+
+ggthemr('greyscale', layout = 'minimal')
+
+## Cosine Similarity Setup =====================================================
+# mash all responses together for each participant
+interviews <- lines %>%
+  filter(speaker == "participant") %>%
+  select(partid, text, line) %>%
+  pivot_wider(names_from = "line", values_from = "text") %>%
+  unite("text", 2:180, sep = " ", na.rm = TRUE) %>%
+  mutate(partid = factor(partid)) %>% 
+  left_join(participants, by = "partid")
+
+interviews_corp <- corpus(interviews, docid_field = "partid")
+
+# assign docvars from participants df
+map_corp_docvars <- function(col) {
+  docvars(interviews_corp, col) <- participants[col]
+}
+
+purrr::map(names(participants), map_corp_docvars)
+
+# create document feature matrix and standardise text
+interviews_dfm <- quanteda::tokens(interviews_corp,
+                         remove_punct = TRUE,
+                         remove_numbers = TRUE) %>%
+  dfm() %>%
+  dfm_tolower() %>%
+  dfm_remove(stopwords("english")) %>%
+  dfm_wordstem()
+
+# cosine-similarity calculation
+corr_sim <- textstat_simil(interviews_dfm,
+                             margin = "documents",
+                             method = "cosine")
+
+corr_df <- corr_sim %>% as.data.frame() %>%
+  pivot_wider(names_from = "document2", values_from = "cosine",
+              names_prefix = "cos_") %>%
+  rename(participant = document1)
+
+# subdivide participants by coaching experience
+participants_by_coaching_exp <- participants %>% 
+  mutate(exp_lvl = case_when(coaching_experience_years <=2 ~ "b",
+                             coaching_experience_years > 2 & coaching_experience_years <= 5 ~ "i",
+                             coaching_experience_years > 5 ~ "a",)) %>% 
+  select(partid, exp_lvl)
+
+# subdivide participants by parkour experience
+participants_by_parkour_exp <- participants %>% 
+  mutate(exp_lvl = case_when(parkour_experience_years <=6 ~ "b",
+                             parkour_experience_years > 6 & parkour_experience_years <= 9 ~ "i",
+                             parkour_experience_years > 9 ~ "a",)) %>% 
+  select(partid, exp_lvl)
+
+```
+
+While this study has primarily focused on a qualitative assessment of the interview transcripts gathered, additional insights into participant responses can be gained with a supplementary quantitative textual analysis. Quantitative approaches to textual analysis, sometimes referred to as *natural language processing*, follow a process of *tokenising* the text by splitting it into smaller meaningful units [@Silge2017]. Often the token unit is a single word, but can also consist of multiple words (*n-grams*), sentences, or paragraphs. Tokenising text allows the corpus of text under analysis to be presented as a *document feature matrix*, with one row per observation (in this instance, participant interview) and a column per feature (token) containing the frequency count for each particular feature contained within that observation. This process of presenting textual data as numerical allows the data to then be counted, aggregated, summarised, and further processed with quantitative techniques. The following analyses were conducted using R [@R-base] in Rstudio (ver. 1.4.1717).
+
+## Interview transcript similarity using cosine similarity scores {#cosine-simil}
+
+Qualitative data collection often ceases at the point where the researcher(s) conducting the study considers a point of data saturation to have been reached, described as the point at which new data no longer reveals new meaningful features [@Aldiabat2018]. This is a subjective decision made using the researchers own experience of the data gathered and the similarity amongst responses received. In this study in particular, as the interviews were to be processed into a single model drawn from multiple participant experiences, it was also important to determine if responses given drastically differed from each other in a manner that indicated incompatibility. 
+
+It is possible to objectively measure the similarity between texts by comparing the occurrence and frequency counts of tokens between two texts. As these have been tokenised, comparing two texts becomes a comparison between two vectors of numbers and quantitative measures can be applied to determine similarity. A standard method of comparing the similarity of text is *cosine similarity*, or the cosine of the angle between two vectors [@Singhal2001]. When applied to text analysis, the cosine is of the angle between the vectors of token frequencies provided by the two documents being compared and is calculated with:
+
+$$
+similarity =\cos (\theta)=\frac{\mathbf{A} \cdot \mathbf{B}}{\|\mathbf{A}\|\|\mathbf{B}\|}=\frac{\sum_{i=1}^{n} A_{i} B_{i}}{\sqrt{\sum_{i=1}^{n} A_{i}^{2}} \sqrt{\sum_{i=1}^{n} B_{i}^{2}}}
+$$
+
+where **A** and **B** are the two term frequency vectors of the documents being compared. Interpreting similarity as an angle in vector space with this method normalises the text regardless of length, as even if the documents differ drastically in size (and therefore may differ if plotted in Euclidean space despite their term similarity), the angle between their vectors remains the same.
+
+Cosine similarity results in scores between 0 and 1 and can be read as a percentage, e.g. a cosine similarity score of 0.8 indicates the documents are 80% similar. Cosine similarity scores between all participant responses recorded in the interview transcripts are reported in Figure \@ref(fig:text-simil-plot).
+
+(ref:text-simil-cap) Cosine similarity scores between all participant interview transcripts.
+
+<!-- Reference with \@ref(fig:text-simil-plot) -->
+
+```{r text-simil-plot, echo=FALSE, fig.cap="(ref:text-simil-cap)", fig.scap="Cosine similarity scores between interview transcripts", message=FALSE, warning=FALSE}
+
+# plot with heatmap
+corr_sim %>%  as.data.frame() %>%
+  ggplot(aes(x = document2, y = document1, fill = cosine)) +
+  geom_tile(color = "white",
+            lwd = 1,
+            linetype = 1) +
+  geom_text(aes(label = round(cosine, 2)), color = "white", size = 3) +
+  labs(x = "Participant ID", y = "Participant ID", fill = "Cosine Similarity") +
+  theme(legend.position = "none")
+
+```
+
+Cosine similarity results range from a minimum of 0.45 to a maximum of 0.91 similarity. Cosine similarity scores are defined as maximally similar at 1 (vectors have identical orientations) and maximally dissimilar at 0 (vectors are orthogonal). Results around 0.5 therefore show that while the texts may not be remarkably similar, they are also not drastically dissimilar. This would indicate that while some interviews were more similar than others, no participant drastically deviated in their responses. However it is worth noting where sources of dissimilarity may have arisen, which may be better illustrated by sub-dividing the similarity plot in Figure \@ref(fig:text-simil-plot) according to sub-groups within the participants.
+
+### Similarity amongst coaching experience levels
+
+Participant 9 in particular appears to have the lowest similarity scores across the most number of comparisons. Participant 9 was the least experienced coach in the group with only 4 months of coaching experience and 2.5 years of parkour training at the time of their interview. It may be that coaching experience level plays a role in the responses given by participants. Cosine similarity scores sub-divided by approximations of coaching experience level are shown in Figure \@ref(fig:text-simil-exp-plot).
+
+(ref:text-simil-exp-cap) Cosine similarity scores by coaching experience level between participant interview transcripts.
+
+<!-- Reference with \@ref(fig:text-simil-exp-plot) -->
+
+```{r text-simil-exp-plot, echo=FALSE, fig.cap="(ref:text-simil-exp-cap)", fig.scap="Cosine similarity scores between interview transcripts by coaching experience", message=FALSE, warning=FALSE, fig.asp=0.4}
+
+corr_sim %>% as.data.frame() %>%
+  left_join(participants_by_coaching_exp, by = c("document1" = "partid")) %>% 
+  select(1:3, exp_lvl) %>% 
+  rename(exp1 = exp_lvl) %>% 
+  left_join(participants_by_coaching_exp, by = c("document2" = "partid")) %>% 
+  select(1:4, exp_lvl) %>% 
+  rename(exp2 = exp_lvl) %>% 
+  #unite(gender1, gender2, col = "gender", sep = "") %>% 
+  filter(exp1 == exp2) %>% 
+  select(-exp2) %>%
+  mutate(exp = case_when(exp1 == "b" ~ "A. 0-2 years *(n = 5)*",
+                          exp1 == "i" ~ "B. 3-5 years *(n = 6)*",
+                          exp1 == "a" ~ "C. 6+ years *(n = 4)*")) %>% 
+  ggplot(aes(x = document2, y = document1, fill = cosine)) +
+  geom_tile(color = "white",
+            lwd = 1,
+            linetype = 1) +
+  geom_text(aes(label = round(cosine, 2)), color = "white", size = 2) +
+  facet_wrap(~exp, scales = "free") +
+  labs(x = "Participant ID", y = "Participant ID", fill = "Cosine Similarity") +
+  theme(strip.text = element_markdown(face = "bold", hjust = 0),
+        legend.position = "none")
+  
+```
+
+While similarity scores do differ amongst experience levels in Figure \@ref(fig:text-simil-exp-plot), it can be seen that the lowest similarity score in each group rises (0-2 years = 0.46, 3-5 years = 0.55, 6+ years = 0.62) and the range of scores narrows (0-2 years = 0.41, 3-5 years = 0.33, 6+ years = 0.20) as coaching experience increases. It may be that, as coaches share understanding amongst their peers in the social milieu that the exchange of parkour coaching knowledge seems to predominantly take place in [@Greenberg2020], they converge on a more common understanding of the kong vault movement over time. However the most experienced group also has the lowest maximum similarity score (0-2 years = 0.87, 3-5 years = 0.88, 6+ years = 0.82) that may, perhaps, indicate that while a general shared understanding may take place, coaches are still likely to develop their own ideas and understanding of the movement based on their experiences over time. Finally, the greatest similarity score in Figure \@ref(fig:text-simil-plot) does not occur when sub-dividing the participants by experience level, and instead occurs between participant 5 (0-2 years coaching experience) and participant 17 (6+ years coaching experience). Both participants 5 and 17 are female and from the USA; this may indicate that other factors influence similarity amongst responses.
+
+<!-- (ref:text-simil-parkour-cap) Cosine similarity scores by parkour training experience level between participant interview transcripts. -->
+
+<!-- Reference with \@ref(fig:text-simil-parkour-plot) -->
+
+<!-- ```{r text-simil-parkour-plot, echo=FALSE, fig.cap="(ref:text-simil-parkour-cap)", fig.scap="Cosine similarity scores between interview transcripts by parkour training experience", message=FALSE, warning=FALSE} -->
+
+<!-- corr_sim %>% as.data.frame() %>% -->
+<!--   left_join(participants_by_parkour_exp, by = c("document1" = "partid")) %>%  -->
+<!--   select(1:3, exp_lvl) %>%  -->
+<!--   rename(exp1 = exp_lvl) %>%  -->
+<!--   left_join(participants_by_parkour_exp, by = c("document2" = "partid")) %>%  -->
+<!--   select(1:4, exp_lvl) %>%  -->
+<!--   rename(exp2 = exp_lvl) %>%  -->
+<!--   #unite(gender1, gender2, col = "gender", sep = "") %>%  -->
+<!--   filter(exp1 == exp2) %>%  -->
+<!--   select(-exp2) %>% -->
+<!--   mutate(exp = case_when(exp1 == "b" ~ "A. 0-6 years *(n = 3)*", -->
+<!--                           exp1 == "i" ~ "B. 7-9 years *(n = 7)*", -->
+<!--                           exp1 == "a" ~ "C. 10+ years *(n = 5)*")) %>%  -->
+<!--   ggplot(aes(x = document2, y = document1, fill = cosine)) + -->
+<!--   geom_tile(color = "white", -->
+<!--             lwd = 1, -->
+<!--             linetype = 1) + -->
+<!--   geom_text(aes(label = round(cosine, 2)), color = "white", size = 2) + -->
+<!--   facet_wrap(~exp, scales = "free") + -->
+<!--   labs(x = "Participant ID", y = "Participant ID", fill = "Cosine Similarity") + -->
+<!--   theme(strip.text = element_markdown(face = "bold", hjust = 0), -->
+<!--         legend.position = "none") -->
+
+<!-- ``` -->
+
+### Similarity amongst genders
+
+Given the differences in experience learning and performing the kong vault described by female participants in Section \@ref(future-studies), it may be worth considering the similarity between their responses independently of those given by male participants. Cosine similarity scores split by gender can be seen in Figure \@ref(fig:text-simil-gender-plot) and clearly show a much stronger degree of similarity amongst responses given by female participants than males. This does not necessarily indicate dissimilarity between the responses given by male and female participants, but rather, that the experience amongst female parkour athletes and coaches appears to be more consistent than those amongst male athletes. This may simply be due to the greater number of male participants—consequently drawn from a more comprehensive array of backgrounds and experiences—taking part in both the wider sport and this particular study, but may also indicate some aspect of the typical female experience in learning, training, and coaching the kong vault that differs from the typical male experience. 
+
+(ref:text-simil-gender-cap) Cosine similarity scores between all female and all male participant interview transcripts.
+
+<!-- Reference with \@ref(fig:text-simil-gender-plot) -->
+
+```{r text-simil-gender-plot, echo=FALSE, fig.cap="(ref:text-simil-gender-cap)", fig.scap="Cosine similarity scores between interview transcripts by gender", message=FALSE, warning=FALSE, fig.asp=0.5}
+
+corr_sim %>% as.data.frame() %>%
+  left_join(participants, by = c("document1" = "partid")) %>% 
+  select(1:3, gender) %>% 
+  rename(gender1 = gender) %>% 
+  left_join(participants, by = c("document2" = "partid")) %>% 
+  select(1:4, gender) %>% 
+  rename(gender2 = gender) %>% 
+  unite(gender1, gender2, col = "gender", sep = "") %>% 
+  filter(gender == "FemaleFemale" | gender == "MaleMale") %>% 
+  mutate(gender = stringr::str_replace_all(gender, "MaleMale", "B. Male *(n = 11)*"),
+         gender = stringr::str_replace_all(gender, "FemaleFemale", "A. Female *(n = 4)*")) %>% 
+  ggplot(aes(x = document2, y = document1, fill = cosine)) +
+  geom_tile(color = "white",
+            lwd = 1,
+            linetype = 1) +
+  geom_text(aes(label = round(cosine, 2)), color = "white", size = 2) +
+  facet_wrap(~gender, scales = "free") +
+  labs(x = "Participant ID", y = "Participant ID", fill = "Cosine Similarity") +
+  theme(strip.text = element_markdown(face = "bold", hjust = 0),
+        legend.position = "none")
+  
+```
+
+### Similarity amongst countries
+
+The role of geography may also be highlighted in Figure \@ref(fig:text-simil-gender-plot) amongst female participants. Although still quite high, the similarity scores of participant 2 from the UK are lower than those between participants 5, 16, and 17 who are all from the USA.  Similarly, participant 9 was the only participant from Norway, which may have influenced their sources of knowledge about the kong vault and their lower overall similarity scores when compared to other participants, as referenced previously. Figure \@ref(fig:text-simil-country-plot) shows the correlation scores between participants from the same country when more than one participant from a single country took part in the study. Correlation scores between participants who hailed from Slovakia and the UK were high, while those from the USA were more varied. This may be due to the greater size of the USA in comparison to the UK and Slovakia, with all American participants coming from different states. This may indicate that, where parkour communities can easily intermingle due to geographical proximity, a larger degree of similarity in their understanding of parkour movement may occur due to the more frequent cross-pollination of ideas and training methods.
+
+(ref:text-simil-country-cap) Cosine similarity scores between interview transcripts by country where n > 1 participants from the same country took part.
+
+<!-- Reference with \@ref(fig:text-simil-country-plot) -->
+
+```{r text-simil-country-plot, echo=FALSE, fig.cap="(ref:text-simil-country-cap)", fig.scap="Cosine similarity scores between interview transcripts by country", message=FALSE, warning=FALSE}
+
+corr_sim %>% as.data.frame() %>%
+  left_join(participants, by = c("document1" = "partid")) %>% 
+  select(1:3, country) %>% 
+  rename(country1 = country) %>% 
+  left_join(participants, by = c("document2" = "partid")) %>% 
+  select(1:4, country) %>% 
+  rename(country2 = country) %>% 
+  unite(country1, country2, col = "country", sep = "") %>% 
+  filter(country == "UKUK" | country == "USAUSA" | country == "SlovakiaSlovakia") %>% 
+  mutate(country = stringr::str_replace_all(country, "USAUSA", "C. USA *(n = 7)*"),
+         country = stringr::str_replace_all(country, "UKUK", "B. UK *(n = 3)*"),
+         country = stringr::str_replace_all(country, "SlovakiaSlovakia", "A. Slovakia *(n = 1)*")) %>% 
+  ggplot(aes(x = document2, y = document1, fill = cosine)) +
+  geom_tile(color = "white",
+            lwd = 1,
+            linetype = 1) +
+  geom_text(aes(label = round(cosine, 2)), color = "white", size = 3) +
+  facet_wrap(~country, scales = "free", ncol = 2) +
+  labs(x = "Participant ID", y = "Participant ID", fill = "Cosine Similarity") +
+  theme(strip.text = element_markdown(face = "bold", hjust = 0),
+        legend.position = "none")
+```
+
+\FloatBarrier
+
+## Interview lengths and word counts
+
+While cosine similarity calculates similarity regardless of text length, it can also be useful to consider the total number of spoken words and responses each participant gave in their interview to determine how interviews may differ from each other. Figure \@ref(fig:word-counts-plot) shows the total number of spoken words by each participant and the interviewer across all interviews, the average number of words spoken by participants and interviewer, and the number of question and response exchanges in each interview. It can be seen that the number of words spoken by the interviewer remained reasonably consistent across all interviews, with an average of 2,203 words spoken per interview. 
+
+(ref:word-counts-cap) Total word count per participant interview for both participant and interviewer. Number labels indicate number of question and response exchanges per interview. Dashed lines indicate the average interview word count for both participants and interviewer.
+
+<!-- Reference with \@ref(fig:word-counts-plot) -->
+
+```{r word-counts-plot, echo=FALSE, fig.cap="(ref:word-counts-cap)", fig.scap="Total word counts per interview", message=FALSE, warning=FALSE}
+
+# total number of words spoken by each speaker in each interview and
+# average number of words per response by speaker in each interview
+wordcounts <- lines %>%
+  group_by(partid, speaker) %>%
+  summarise(total_words = sum(no_words),
+            avg_words = floor(mean(no_words))) %>%
+  ungroup() %>%
+  pivot_wider(names_from = speaker, values_from = c(total_words, avg_words)) %>%
+  mutate(ratio = round(total_words_interviewer / total_words_participant, 2))
+
+# average number of words per response by each speaker in each interivew,
+# also split by gender for use in plotting later
+avgs_totals <- wordcounts %>%
+  left_join(participants, by = "partid") %>%
+  summarise(interviewer = mean(total_words_interviewer),
+            participant = mean(total_words_participant))
+
+avgs_totals_by_gender <- wordcounts %>%
+  left_join(participants, by = "partid") %>%
+  group_by(gender) %>%
+  summarise(interviewer = mean(total_words_interviewer),
+            participant = mean(total_words_participant)) %>%
+  ungroup() %>%
+  pivot_wider(names_from = gender, values_from = c(interviewer, participant))
+
+# number of responses each participant gave in their interview
+num_responses <- lines %>%
+  group_by(partid, speaker) %>%
+  summarise(num_responses = length(line)) %>%
+  ungroup()
+
+# summary of no of words spoken per response by each speaker in each
+# interview (range, quantiles, median, mean)
+wordcounts_summary_participant <- lines %>%
+  group_by(partid, speaker) %>%
+  group_modify(~broom::tidy(summary(.x$no_words))) %>%
+  mutate(across(where(is.numeric), ~round(.x, 0))) %>%
+  left_join(num_responses, by = c("partid", "speaker")) %>% 
+  filter(speaker == "participant")
+
+# plot
+wordcounts %>%
+  left_join(filter(num_responses, speaker == "participant"), by = "partid") %>%
+  #ggplot(aes(fct_reorder(factor(partid), total_words_participant))) +
+  ggplot(aes(partid)) +
+  geom_hline(yintercept = avgs_totals$interviewer, color = ggthemr::swatch()[[4]], linetype = 2) +
+  geom_hline(yintercept = avgs_totals$participant, color = ggthemr::swatch()[[2]], linetype = 2) +
+  geom_linerange(aes(ymin = total_words_interviewer, ymax = total_words_participant), color = "grey") +
+  geom_point(aes(y = total_words_interviewer, color = "Interviewer"), size = 3) +
+  geom_point(aes(y = total_words_participant, color = "Participant"), size = 3) +
+  # geom_richtext(aes(x = factor(partid), y = total_words_participant + 500, label = ratio), size = 3, label.color = NA) +
+  geom_richtext(aes(x = factor(partid), y = total_words_participant + 800, label = num_responses), size = 3, label.color = NA) +
+  #geom_richtext(aes(x = 4.8, y = 14000, label = "Number labels indicate total number of responses given"), size = 3, label.color = NA) +
+  scale_x_discrete(breaks = unique(lines$partid), labels = unique(lines$partid)) +
+  scale_y_continuous(breaks = seq(from = 1000, to = 15000, by = 1000), limits = c(1000, 15000)) +
+  labs(x = "Participant ID", y = "Total No. of Words") +
+  scale_color_manual(name = "Speaker:", values = c(Interviewer = ggthemr::swatch()[[4]], Participant = ggthemr::swatch()[[2]])) +
+  theme(legend.position = "bottom",
+        legend.direction = "horizontal")
+
+```
+
+The number of exchanges and total participant word counts varied, with a range of 38 to 93 exchanges and 4,248 to 14,129 total words spoken by participants. It may be that a greater degree of prompting from more interview questions could be expected to increase the total number of words spoken by a participant. However the number of exchanges and total words spoken do not appear to strongly or significantly correlate at all (*r* = 0.08, *t*(13) = -0.29, *p* = 0.78, see Figure \@ref(fig:word-counts-corr-plot)), indicating some participants provided many short responses while others gave longer answers to a similar number of exchanges, and vice-versa.
+
+(ref:word-counts-corr-cap) Correlation plot between the number of question and response exchanges and the total number of words spoken by a participant.
+
+<!-- Reference with \@ref(fig:word-counts-corr-plot) -->
+
+```{r word-counts-corr-plot, echo=FALSE, fig.cap="(ref:word-counts-corr-cap)", fig.scap="Correlation plot between number of exchanges and total spoken words", message=FALSE, warning=FALSE}
+
+wordcounts %>% 
+  left_join(num_responses %>% filter(speaker == "participant"), by = "partid") %>% 
+  #cor.test(num_responses, total_words_participant) # remember to change pipe above to %$%
+  ggplot(aes(num_responses, total_words_participant)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  geom_richtext(aes(label = "*r* = 0.08, *t*(13) = -0.29, *p* = 0.78",
+                    x = 83, y = 14000), label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
+  labs(x = "Number of exchanges", y = "Total words spoken by participant")
+
+```
+
+Interviewer consistency can further be assessed by returning briefly to cosine similarity as in Section \@ref(cosine-simil), but analysing only the questions asked by the interviewer in place of the responses given by participants. Cosine similarity for interviewer text only is shown in Figure \@ref(fig:cosine-questions-plot) and show a high degree of similarity amongst the questioning of all participants, with only two comparisons scoring below 0.80 cosine similarity with scores of 0.78 each.  It seems that the interviewer was consistent in their questioning of participants, and that variation in interview length was a result of the characteristic verbosity or brevity of individuals rather than receiving more or less engagement or prompting from the interviewer.
+
+(ref:cosine-questions-cap) Cosine similarity scores between all interviewer questions across all interview transcripts.
+
+<!-- Reference with \@ref(fig:cosine-questions-plot) -->
+
+```{r cosine-questions-plot-setup, include=FALSE}
+## Cosine Similarity - Questions ===============================================
+# mash all questions together for each participant
+
+questions <- lines %>%
+  filter(speaker == "interviewer") %>%
+  select(partid, text, line) %>%
+  pivot_wider(names_from = "line", values_from = "text") %>%
+  unite("text", 2:180, sep = " ", na.rm = TRUE) %>%
+  mutate(partid = factor(partid)) %>% 
+  left_join(participants, by = "partid")
+
+questions_corp <- corpus(questions, docid_field = "partid")
+
+# assign docvars from participants df
+map_corp_docvars_questions <- function(col) {
+  docvars(questions_corp, col) <- participants[col]
+}
+
+purrr::map(names(participants), map_corp_docvars_questions)
+
+# create document feature matrix and standardise text
+questions_dfm <- quanteda::tokens(questions_corp,
+                                   remove_punct = TRUE,
+                                   remove_numbers = TRUE) %>%
+  dfm() %>%
+  dfm_tolower() %>%
+  dfm_remove(stopwords("english")) %>%
+  dfm_wordstem()
+
+# cosine-similarity calculation
+corr_sim_questions <- textstat_simil(questions_dfm,
+                           margin = "documents",
+                           method = "cosine")
+
+corr_questions_df <- corr_sim_questions %>% as.data.frame() %>%
+  pivot_wider(names_from = "document2", values_from = "cosine",
+              names_prefix = "cos_") %>%
+  rename(participant = document1) %>% 
+  pivot_longer(-1, names_to = "comparison", values_to = "corr", values_drop_na = T)
+
+```
+
+```{r cosine-questions-plot, echo=FALSE, fig.cap="(ref:cosine-questions-cap)", fig.scap="Cosine similarity for interviewer questions", message=FALSE, warning=FALSE}
+
+corr_sim_questions %>%  as.data.frame() %>%
+  ggplot(aes(x = document2, y = document1, fill = cosine)) +
+  geom_tile(color = "white",
+            lwd = 1,
+            linetype = 1) +
+  geom_text(aes(label = round(cosine, 2)), color = "white", size = 3) +
+  labs(x = "Participant ID", y = "Participant ID", fill = "Cosine Similarity") +
+  theme(legend.position = "none")
+
+```
+
+
+\FloatBarrier
+
+## Sentiment analysis
+
+Sentiment analysis of the interview transcripts provides a way to understand any emotionality attached to the responses given. It could be expected that not a lot of emotion may be expressed given the subject matter, but topics on learning and coaching may also cross into psychological or sociological areas that may involve discussing the feelings of participants during those experiences. 
+
+To perform sentiment analysis, the text of each interview is first tokenised, as discussed in Section \@ref(cosine-simil). However, instead of tokenising at the text or sentence level the text is tokenised per response. Each response is then passed through a sentiment analysis algorithm [@Rinker2017] that assigns a sentiment score (-1 for negative sentiment or +1 for positive) to each word in the response. The algorithm also considers each word in context for valence shifters that may flip the sentiment of a word—for example, "I like it" may score "like" as positive but the sentence "I don't like it" will score it as negative. The average sentiment score for each response is then calculated.
+
+Sentiment scores smoothed across entire interviews are presented in Figure \@ref(fig:sentiment-plot). As expected, sentiment remains fairly neutral throughout all interviews, on average failing to exceed a sentiment score of 0.4. All interviews remain overall positive throughout. 
+
+(ref:sentiment-cap) Sentiment scores for each participant interview, smoothed.
+
+<!-- Reference with \@ref(fig:sentiment-plot) -->
+
+```{r sentiment-plot, echo=FALSE, fig.cap="(ref:sentiment-cap)", fig.scap="Average sentiment scores per interview", message=FALSE, warning=FALSE}
+
+# labeller function for facets
+label_prefix <- function(string, prefix = "Participant ") paste0(prefix, string)
+
+# create sentiment scores
+sentiment_by_partid <- lines %>%
+  filter(speaker == "participant") %>%
+  mutate(sentence = get_sentences(text)) %$%
+  sentiment_by(sentence, list(partid))
+
+sentiment_by_response <- lines %>%
+  filter(speaker == "participant") %>%
+  mutate(sentence = get_sentences(text)) %$%
+  sentiment_by(sentence, list(partid, line))
+
+# plot with smoothed line
+uncombine(sentiment_by_response) %>%
+  group_by(partid) %>%
+  mutate(response = row_number(),
+         pct = floor((response/n()) * 100)) %>%
+  ungroup() %>%
+  ggplot(aes(pct, sentiment)) +
+  geom_hline(yintercept = 0, lty = 2, alpha = 0.5, colour = "grey70") +
+  # geom_point(alpha = 0.1) +
+  geom_smooth() +
+  scale_x_continuous(labels = scales::percent_format(scale = 1), breaks = c(10, 50, 90)) +
+  scale_y_continuous(breaks = c(-0.2, 0, 0.2, 0.4)) +
+  facet_wrap(~partid, ncol = 3, labeller = as_labeller(label_prefix)) +
+  labs(x = "Interview Progress", y = "Sentiment Score") +
+  theme(strip.text = element_markdown(face = "bold", hjust = 0))
+
+```
+
+
+For a more granular inspection of the sentiment scores, individual response sentiment scores can be plotted without averaging across the entire interview. These scores are shown in Figure \@ref(fig:sentiment-bar-plot). Individual responses contain a higher degree of sentiment, and there are also some negative spikes of sentiment sporadically throughout. As the overall interview sentiment remains positive, it may be worth isolating some of the few identified negative responses to consider their contents.
+
+When considering the text of the negative responses given, most relate to some unfortunate side-effect of the interview process, such as experiencing a disconnect in the video calling software used or a response being labelled as unclear. Those few responses that appear to genuinely relate to questions all use the words 'fear', 'apprehension', or 'mistake' in relation to issues around performing a kong vault, which are understandably negative sentiments. However these also usually concern the student experience rather than coach, particularly beginner-level students as they first learn the movement, and form a small part of the overall discussion. It appears that parkour coaches predominantly feel positively about the kong vault, although perhaps not strongly so.
+
+(ref:sentiment-bar-cap) Sentiment scores for each response given by a participant in their interview.
+
+<!-- Reference with \@ref(fig:sentiment-bar-plot) -->
+
+```{r sentiment-bar-plot, echo=FALSE, fig.cap="(ref:sentiment-bar-cap)", fig.scap="Sentiment scores per response interview", message=FALSE, warning=FALSE}
+
+# sentiment as bar plot
+sentiment_by_response %>%
+  group_by(partid) %>%
+  mutate(response = row_number(),
+         pct = floor((response/n()) * 100)) %>%
+  ungroup() %>%
+  ggplot(aes(pct, ave_sentiment)) +
+  geom_col() +
+  geom_hline(yintercept = 0, lty = 2, alpha = 0.5, colour = "grey70") +
+  scale_x_continuous(labels = scales::percent_format(scale = 1), breaks = c(10, 50, 90)) +
+  scale_y_continuous(breaks = c(-0.6, 0, 0.6)) +
+  facet_wrap(~partid, ncol = 5, labeller = as_labeller(label_prefix)) +
+  labs(x = "Interview Progress", y = "Sentiment Score") +
+  theme(strip.text = element_markdown(face = "bold", hjust = 0))
+
+```
+
+\FloatBarrier
+
+## Commonly occurring associations between words
+
+(ref:common-assoc-cap) Commonly associated words from all participant interviews.
+
+<!-- Reference with \@ref(fig:common-assoc-plot) -->
+
+```{r common-assoc-plot, echo=FALSE, fig.cap="(ref:common-assoc-cap)", fig.scap="Common word associations in interviews", message=FALSE, warning=FALSE}
+
+cors_in_responses <- lines %>%
+  filter(speaker == "participant") %>%
+  unite("response", partid:line, sep = "-") %>%
+  unnest_tokens(word, text) %>%
+  filter(!word %in% stop_words$word) %>%
+  group_by(word) %>%
+  filter( n() > 20 ) %>%
+  pairwise_cor(word, response, sort = TRUE, upper = F)
+
+
+cors_in_responses %>%
+  filter(correlation >= 0.24 & correlation < 0.51) %>%
+  graph_from_data_frame() %>%
+  ggraph(layout = "fr") +
+  geom_edge_link(aes(edge_alpha = correlation), show.legend = FALSE) +
+  geom_node_point(color = "grey70", size = 4) +
+  geom_node_text(aes(label = name), size = 3, repel = TRUE) +
+  theme_void()
+
+```
+
+Finally, a network graph of common word associations found across all interviews can be used to determine how words that frequently appear together may be related. Figure \@ref(fig:common-assoc-plot) shows a network graph of common word associations identified from participant interviews. There are two large clusters of words, one relating to direct descriptions of the kong vault and one seemingly related to learning and coaching, along with some smaller independent clusters. Some connections between certain words in particular may prompt further interest:
+
+- The association between the words 'power' and 'distance' seem to imply a relationship is perceived between those terms in the understanding of the kong vault by parkour coaches and supports the ideas put forward for investigation in future studies detailed in Section \@ref(future-studies).
+- The association of the words 'upright' and 'chest' link to the positioning of the body on exiting the kong vault, and as the only word associated with 'chest', 'upright' appears to be the predominant focus of body repositioning to take place. Given the diving nature of the kong vault this may be expected, as reorientating oneself upright is a necessary key component of exiting the vault when aiming to land with the feet. This is also potentially reflected in the association of the words 'feet' and 'front', as although these are not connected to chest or upright, returning the feet to a position in front of the body is another necessary key component for reorientation from the dive phase of the kong vault.
+- Similarly, 'hips' and 'lift' indicate the role of the hips during the movement, and in particular link to the words 'weight', 'naturally', and 'strong'. This association through the word weight to the word strong could result from the issues described in Section \@ref(sc-lac) around gender weight distribution and strength differences and the role they play in the kong vault.
+- The association between the words 'upper' and 'strength' may imply that upper body strength is considered more of a topic related to the kong vault, although 'upper' itself is also immediately associated with the word 'lower' perhaps indicating that strength in both the upper and lower body are jointly of concern.
+- 'Pull' and 'push' both being directly associated along with the word 'hands' may reflect the uncertainly in the role of the hands on the obstacle during the kong vault movement expressed in Section \@ref(obstacle-contact).
+- The word 'similar' associating with the word 'dash' may indicate the degree to which the dash vault is considered the most similar of the vaults to the kong vault as a hands-only bilateral vault, or potentially due to its role in the hybrid kash vault movement.
+
+\FloatBarrier
+
+## Summary
+
+Cosine similarity scoring shows that responses varied in their similarity but were more consistently similar amongst more experienced coaches, female participants, and participants from similar geographical locations. Interviewer questioning was consistent in similarity across all interviews, with overall interview length seemingly unrelated to any influence of the interviewer. Sentiment analysis shows that parkour coaches overall feel positively about the kong vault, although not strongly so, with negative sentiment expressed mainly in relation to any fear or apprehension felt during the initial learning process of the movement. Common word associations were plotted and features identified relating to potential enquiries for future study, namely the relationship between power and distance in the kong vault, the overall role of the upper body in the movement, and the different experiences of the vault between genders. The consistency of interview questioning and responses support the use of the data collected in providing an overview of the understanding of the kong vault amongst parkour coaches, with the common word associations found also acting as further prompts for possible future biomechanical studies into the vault.
