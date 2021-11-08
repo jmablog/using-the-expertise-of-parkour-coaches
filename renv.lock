@@ -514,14 +514,14 @@
     "ggthemr": {
       "Package": "ggthemr",
       "Version": "1.1.0",
-      "Source": "Local",
-      "RemoteType": "local",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
       "RemoteUsername": "Mikata-Project",
       "RemoteRepo": "ggthemr",
       "RemoteRef": "master",
       "RemoteSha": "4a31e0df151eacee4cbcec736411c2704f44cf4a",
-      "RemoteHost": "api.github.com",
-      "Hash": "f80ca54e3558e0b7807f4a595c2da2d4"
+      "Hash": "43feb8749c158dab6414fd50af1ae246"
     },
     "gh": {
       "Package": "gh",
